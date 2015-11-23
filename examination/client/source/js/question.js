@@ -41,6 +41,18 @@ Question.prototype.printAltQuestion = function(div) {
 
     h1.appendChild(document.createTextNode(this.question));
 
+    var inputFrag = this.getAltFrag();
+
+    form.appendChild(inputFrag);
+    form.appendChild(button);
+
+    frag.appendChild(h1);
+    frag.appendChild(form);
+
+    div.appendChild(frag);
+};
+
+Question.prototype.getAltFrag = function() {
     var inputFrag = document.createDocumentFragment();
     var input;
     var p;
@@ -56,14 +68,7 @@ Question.prototype.printAltQuestion = function(div) {
         p.appendChild(document.createTextNode(this.alt[alt]));
         inputFrag.appendChild(p);
     }
-
-    form.appendChild(inputFrag);
-    form.appendChild(button);
-
-    frag.appendChild(h1);
-    frag.appendChild(form);
-
-    div.appendChild(frag);
+    return inputFrag;
 };
 
 Question.prototype.printQuestion = function(div) {
