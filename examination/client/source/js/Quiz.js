@@ -23,21 +23,26 @@ Quiz.prototype.getQuestion = function (url) {
 };
 
 Quiz.prototype.response = function (error, response) {
+    var questionDiv = document.querySelector("#question");
+    var answerDiv = document.querySelector("#answer-response");
     console.log("response...");
 
     if(error) {
-        //gör nå coolt
+        console.log("Fel svar..");
     }
 
     var obj = JSON.parse(response);
-    console.log(obj.message);
+    //console.log(obj.message);
     if(obj.question) {
+        answerDiv.classList.toggle("hide");
         this.question = new Question(obj);
         this.question.print();
         this.addListener();
     }
     else {
-        console.log(obj.answer);
+        questionDiv.classList.toggle("hide");
+        answerDiv.classList.toggle("hide");
+        console.log(obj.message);
     }
 };
 
