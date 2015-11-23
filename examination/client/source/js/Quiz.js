@@ -7,7 +7,6 @@ var Ajax = require("./Ajax");
 
 function Quiz(username) {
     this.username = username;
-    //this.req = undefined;
     this.question = undefined;
 
     this.getQuestion();
@@ -35,18 +34,29 @@ Quiz.prototype.response = function (error, response) {
     if(obj.question) {
         this.question = new Question(obj);
         this.question.print();
-
-        var config = {method: "POST",
-            url: this.question.nextURL,
-            data: {
-                answer: "2"
-            }};
-        var responseFunction = this.response.bind(this);
-        Ajax.req(config, responseFunction);
+        this.addListener();
     }
     else {
         console.log(obj.answer);
     }
 };
+
+Quiz.prototype.addListener = function() {
+    var button = document.querySelector("#submit");
+    var click = this.submit.bind(this);
+    button.addEventListener("click", click);
+};
+
+Quiz.prototype.submit = function() {
+    var input = document.querySelector("#answer");
+    var config = {method: "POST",
+        url: this.question.nextURL,
+        data: {
+            answer: input.value
+        }};
+    var responseFunction = this.response.bind(this);
+    Ajax.req(config, responseFunction);
+};
+
 
 module.exports = Quiz;
