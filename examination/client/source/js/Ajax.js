@@ -16,7 +16,7 @@ function req(config, callback) {
 
     r.open(config.method, config.url);
     if(config.data){
-        console.log(config.url);
+        console.log(config);
         r.setRequestHeader("Content-Type", "application/json");
         r.send(JSON.stringify(config.data));
     } else {

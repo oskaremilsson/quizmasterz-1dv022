@@ -8,15 +8,15 @@ var Ajax = require("./Ajax");
 function Quiz(username) {
     this.username = username;
     this.question = undefined;
-
+    this.nextURL = undefined;
     this.getQuestion();
 }
 
 
-Quiz.prototype.getQuestion = function (url) {
+Quiz.prototype.getQuestion = function () {
     console.log("asking..");
-
-    url = url || "http://vhost3.lnu.se:20080/question/1";
+    var url = this.nextURL || "http://vhost3.lnu.se:20080/question/1";
+    console.log(url);
     var config = {method: "GET", url: url};
     var responseFunction = this.response.bind(this);
     Ajax.req(config, responseFunction);
@@ -25,37 +25,66 @@ Quiz.prototype.getQuestion = function (url) {
 Quiz.prototype.response = function (error, response) {
     var questionDiv = document.querySelector("#question");
     var answerDiv = document.querySelector("#answer-response");
+
     console.log("response...");
 
     if(error) {
-        console.log("Fel svar..");
+        console.log( JSON.parse(response));
+        //end quiz
     }
 
     var obj = JSON.parse(response);
     //console.log(obj.message);
     if(obj.question) {
-        answerDiv.classList.toggle("hide");
+        questionDiv.classList.add("show");
+        questionDiv.classList.remove("hide");
+
         this.question = new Question(obj);
         this.question.print();
+        this.nextURL = obj.nextURL;
+
+        console.log(this.nextURL);
+
+        console.log("Adding listener..");
         this.addListener();
     }
     else {
-        questionDiv.classList.toggle("hide");
-        answerDiv.classList.toggle("hide");
-        console.log(obj.message);
+        answerDiv.classList.add("show");
+        answerDiv.classList.remove("hide");
+        console.log(obj);
+        this.nextURL = obj.nextURL;
+
+        var p = document.createElement("p");
+        var text = document.createTextNode(obj.message);
+        p.appendChild(text);
+        answerDiv.appendChild(p);
+
+        var newQuestion = this.getQuestion.bind(this);
+        setTimeout(newQuestion, 1000);
     }
+
 };
 
 Quiz.prototype.addListener = function() {
-    var button = document.querySelector("#submit");
+    this.button = document.querySelector("#submit");
     var click = this.submit.bind(this);
-    button.addEventListener("click", click);
+    this.button.addEventListener("click", click);
 };
 
 Quiz.prototype.submit = function() {
-    var input = document.querySelector("#answer");
+    console.log("submitting...");
+    var input;
+    this.button.removeEventListener("click", this.submit.bind(this));
+    if(document.querySelector("#answer")) {
+        input = document.querySelector("#answer");
+    }
+    else {
+        input = document.querySelector("input[name='alternative']:checked");
+    }
+
+
     var config = {method: "POST",
-        url: this.question.nextURL,
+        url: this.nextURL,
         data: {
             answer: input.value
         }};
