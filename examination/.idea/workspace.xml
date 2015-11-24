@@ -44,8 +44,8 @@
       <file leaf-file-name="Quiz.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/source/js/Quiz.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.444445">
-              <caret line="164" column="44" selection-start-line="164" selection-start-column="44" selection-end-line="164" selection-end-column="44" />
+            <state vertical-scroll-proportion="-9.074074">
+              <caret line="165" column="60" selection-start-line="165" selection-start-column="60" selection-end-line="165" selection-end-column="60" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -53,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Highscore.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Highscore.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/source/js/Highscore.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7216981">
+            <state vertical-scroll-proportion="-17.0">
               <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
               <folding>
                 <element signature="n#!!doc;n#sortFormula#0" expanded="false" />
@@ -87,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="question.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="question.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/source/js/question.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.074074">
-              <caret line="27" column="92" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="92" />
+            <state vertical-scroll-proportion="0.5990566">
+              <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -126,11 +126,11 @@
         <option value="$PROJECT_DIR$/client/source/css/style.css" />
         <option value="$PROJECT_DIR$/client/source/js/Ajax.js" />
         <option value="$PROJECT_DIR$/client/source/js/Timer.js" />
-        <option value="$PROJECT_DIR$/client/source/js/question.js" />
         <option value="$PROJECT_DIR$/client/source/js/app.js" />
         <option value="$PROJECT_DIR$/client/source/index.html" />
         <option value="$PROJECT_DIR$/client/source/js/Quiz.js" />
         <option value="$PROJECT_DIR$/client/source/js/Highscore.js" />
+        <option value="$PROJECT_DIR$/client/source/js/question.js" />
       </list>
     </option>
   </component>
@@ -452,16 +452,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/source/js/question.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.074074">
-          <caret line="27" column="92" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/source/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-22.23077">
@@ -490,6 +480,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/source/js/Highscore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0">
+          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!doc;n#sortFormula#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/source/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.074074">
@@ -500,20 +500,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/source/js/Quiz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.444445">
-          <caret line="164" column="44" selection-start-line="164" selection-start-column="44" selection-end-line="164" selection-end-column="44" />
+        <state vertical-scroll-proportion="-9.074074">
+          <caret line="165" column="60" selection-start-line="165" selection-start-column="60" selection-end-line="165" selection-end-column="60" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/source/js/Highscore.js">
+    <entry file="file://$PROJECT_DIR$/client/source/js/question.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7216981">
-          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.5990566">
+          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
           <folding>
-            <element signature="n#!!doc;n#sortFormula#0" expanded="false" />
+            <element signature="e#0#42#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -40,14 +40,17 @@ Question.prototype.getAltFrag = function() {
 
     console.log(this.alt);
     for(var alt in this.alt) {
-        p = document.createElement("p");
-        input = document.createElement("input");
-        input.setAttribute("type", "radio");
-        input.setAttribute("name", "alternative");
-        input.setAttribute("value", alt);
-        p.appendChild(input);
-        p.appendChild(document.createTextNode(this.alt[alt]));
-        inputFrag.appendChild(p);
+        if(this.alt.hasOwnProperty(alt)) {
+            p = document.createElement("p");
+            input = document.createElement("input");
+            input.setAttribute("type", "radio");
+            input.setAttribute("name", "alternative");
+            input.setAttribute("value", alt);
+            p.appendChild(input);
+            p.appendChild(document.createTextNode(this.alt[alt]));
+            inputFrag.appendChild(p);
+        }
+
     }
     return inputFrag;
 };
