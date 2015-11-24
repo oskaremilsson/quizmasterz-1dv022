@@ -7,7 +7,9 @@ function submit(event) {
         event.preventDefault();
         console.log("submitting");
         var input = document.querySelector("#nickname").value;
-        q = new Quiz(input);
+        if(input.length > 1) {
+            q = new Quiz(input);
+        }
     }
 }
 

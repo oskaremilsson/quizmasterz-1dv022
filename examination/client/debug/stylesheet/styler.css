@@ -1,0 +1,77 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Adobe Hebrew";
+}
+
+#wrapper {
+    width: 100%;
+}
+
+#content{
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+#welcome {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.description {
+    text-align: center;
+}
+
+.welcomeHead {
+    font-size: 4em;
+}
+
+#qForm {
+    padding: 20px;
+}
+
+#qForm label {
+    max-width: 100%;
+    font-size: 18px;
+}
+
+input[type="text"] {
+    font-size: 35px;
+    line-height: 35px;
+    padding: 10px;
+    height: 50px;
+    border-radius: 25px;
+    max-width: 100%;
+    border: 2px solid #efa131;
+    text-align: center;
+}
+
+input[type="text"]:focus, input[type="button"] {
+    outline: none;
+}
+
+input[type="button"] {
+    border-radius: 15px;
+    margin: 10px;
+    padding: 5px;
+    height: 50px;
+    width: 120px;
+    background: #37d61d;
+    border: 2px solid #62ef31;
+    font-size: 35px;
+}
+
+input[type="button"]:active {
+    margin-top: 11px;
+    margin-left: 11px;
+    background: #3ba417;
+}
+
+input[type="radio"] {
+    height: 50px;
+    width: 50px;
+}
+
