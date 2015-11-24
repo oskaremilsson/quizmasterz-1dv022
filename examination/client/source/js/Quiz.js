@@ -29,12 +29,6 @@ Quiz.prototype.getQuestion = function () {
 };
 
 Quiz.prototype.response = function (error, response) {
-    var questionDiv = document.querySelector("#question");
-    var answerDiv = document.querySelector("#answer-response");
-
-    questionDiv.classList.add("hide");
-    answerDiv.classList.add("hide");
-
     console.log("response...");
 
     if(error) {
@@ -49,6 +43,10 @@ Quiz.prototype.response = function (error, response) {
     }
 
     var obj = JSON.parse(response);
+
+    this.nextURL = obj.nextURL;
+    console.log(this.nextURL);
+
     if(obj.question) {
         this.responseQuestion(obj);
     }
@@ -59,32 +57,27 @@ Quiz.prototype.response = function (error, response) {
 };
 
 Quiz.prototype.responseQuestion = function(obj) {
-    var questionDiv = document.querySelector("#question");
-    questionDiv.classList.toggle("hide");
-
+    var content = document.querySelector("#content");
+    this.clearDiv(content);
     this.question = new Question(obj);
     this.question.print();
 
     this.timer = new Timer(this, document.querySelector("#timer h1"), 20);
     this.timer.start();
 
-    this.nextURL = obj.nextURL;
-    console.log(this.nextURL);
-
     console.log("Adding listener..");
     this.addListener();
 };
 
 Quiz.prototype.responseAnswer = function(obj) {
-    var answerDiv = document.querySelector("#answer-response");
-    answerDiv.classList.toggle("hide");
-    console.log(obj);
-    this.nextURL = obj.nextURL;
+    var content = document.querySelector("#content");
+    this.clearDiv(content);
 
-    var p = document.createElement("p");
+    var template = document.querySelector("#template-answer").content.cloneNode(true);
     var text = document.createTextNode(obj.message);
-    p.appendChild(text);
-    answerDiv.replaceChild(p, answerDiv.querySelector("p"));
+    template.querySelector("p").appendChild(text);
+
+    content.appendChild(template);
 
     var newQuestion = this.getQuestion.bind(this);
     setTimeout(newQuestion, 1000);
@@ -144,5 +137,10 @@ Quiz.prototype.gameOver = function() {
     div.appendChild(document.createTextNode("GAME OVER!! Time: " + this.totalTime));
 };
 
+Quiz.prototype.clearDiv = function(div) {
+    while(div.hasChildNodes()) {
+        div.removeChild(div.lastChild);
+    }
+};
 
 module.exports = Quiz;

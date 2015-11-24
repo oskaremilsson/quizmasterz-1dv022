@@ -9,14 +9,13 @@ function Question(obj) {
 }
 
 Question.prototype.print = function() {
-    var questionDiv = document.querySelector("#question");
-    this.clearDiv(questionDiv);
+    //this.clearDiv(questionDiv);
     if(this.alt) {
         console.log("has alternatives");
-        this.printAltQuestion(questionDiv);
+        this.printAltQuestion();
     }
     else {
-        this.printQuestion(questionDiv);
+        this.printQuestion();
     }
 };
 
@@ -26,30 +25,13 @@ Question.prototype.clearDiv = function(div) {
     }
 };
 
-Question.prototype.printAltQuestion = function(div) {
-    var frag = document.createDocumentFragment();
-
-    var h1 = document.createElement("h1");
-    var form = document.createElement("form");
-    form.setAttribute("id", "qForm");
-
-    var button = document.createElement("input");
-    button.setAttribute("id", "submit");
-    button.setAttribute("value", "Send");
-    button.setAttribute("type", "button");
-
-
-    h1.appendChild(document.createTextNode(this.question));
-
+Question.prototype.printAltQuestion = function() {
+    var template = document.querySelector("#template-question-alt").content.cloneNode(true);
+    template.querySelector(".qHead").appendChild(document.createTextNode(this.question));
     var inputFrag = this.getAltFrag();
-
-    form.appendChild(inputFrag);
-    form.appendChild(button);
-
-    frag.appendChild(h1);
-    frag.appendChild(form);
-
-    div.appendChild(frag);
+    console.log(template.querySelector("#submit"));
+    template.querySelector("#qForm").insertBefore(inputFrag, template.querySelector("#submit"));
+    document.querySelector("#content").appendChild(template);
 };
 
 Question.prototype.getAltFrag = function() {
@@ -71,33 +53,10 @@ Question.prototype.getAltFrag = function() {
     return inputFrag;
 };
 
-Question.prototype.printQuestion = function(div) {
-    var frag = document.createDocumentFragment();
-
-    var h1 = document.createElement("h1");
-    var form = document.createElement("form");
-    form.setAttribute("id", "qForm");
-
-    var button = document.createElement("input");
-    button.setAttribute("id", "submit");
-    button.setAttribute("value", "Send");
-    button.setAttribute("type", "button");
-
-
-    h1.appendChild(document.createTextNode(this.question));
-
-    var input = document.createElement("input");
-    input.setAttribute("type", "text");
-    input.setAttribute("id", "answer");
-
-
-    form.appendChild(input);
-    form.appendChild(button);
-
-    frag.appendChild(h1);
-    frag.appendChild(form);
-
-    div.appendChild(frag);
+Question.prototype.printQuestion = function() {
+    var template = document.querySelector("#template-question").content.cloneNode(true);
+    template.querySelector(".qHead").appendChild(document.createTextNode(this.question));
+    document.querySelector("#content").appendChild(template);
 };
 
 module.exports = Question;
