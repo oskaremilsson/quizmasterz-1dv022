@@ -5,10 +5,11 @@
 var Question = require("./question");
 var Ajax = require("./Ajax");
 var Timer = require("./Timer");
+var Highscore = require("./Highscore");
 
 function Quiz(nickname) {
     console.log(nickname);
-    this.username = nickname;
+    this.nickname = nickname;
     this.timer = undefined;
     this.question = undefined;
     this.nextURL = "http://vhost3.lnu.se:20080/question/1";
@@ -35,6 +36,8 @@ Quiz.prototype.response = function (error, response) {
     if(error) {
         if(error === 404) {
             console.log("End the quiz");
+            //show time and highscore
+            this.gameCompleted();
         }
         else {
             console.log(error);
@@ -42,16 +45,18 @@ Quiz.prototype.response = function (error, response) {
         }
     }
 
-    var obj = JSON.parse(response);
+    if(response) {
+        var obj = JSON.parse(response);
 
-    this.nextURL = obj.nextURL;
-    console.log(this.nextURL);
+        this.nextURL = obj.nextURL;
+        console.log(this.nextURL);
 
-    if(obj.question) {
-        this.responseQuestion(obj);
-    }
-    else {
-        this.responseAnswer(obj);
+        if(obj.question) {
+            this.responseQuestion(obj);
+        }
+        else {
+            this.responseAnswer(obj);
+        }
     }
 
 };
@@ -127,10 +132,47 @@ Quiz.prototype.submit = function() {
 Quiz.prototype.gameOver = function() {
     console.log("GAME OVER!!!");
     var div = document.querySelector("#content");
-    while(div.hasChildNodes()) {
+    /*while(div.hasChildNodes()) {
         div.removeChild(div.lastChild);
-    }
+    }*/
+    this.clearDiv(div);
     div.appendChild(document.createTextNode("GAME OVER!! Time: " + this.totalTime));
+};
+
+Quiz.prototype.gameCompleted = function() {
+    var hs = new Highscore(this.nickname, this.totalTime);
+    if(hs.addToList()) {
+        console.log("you made it to the list");
+        var template = document.querySelector("#template-newHighscore").content.cloneNode(true);
+        var hsFrag = this.createHighscoreFragment(hs);
+        console.log(hsFrag);
+        template.querySelector("table").appendChild(hsFrag);
+
+        this.clearDiv(document.querySelector("#content"));
+        document.querySelector("#content").appendChild(template);
+
+    } else {
+        console.log("naww :(");
+    }
+};
+
+Quiz.prototype.createHighscoreFragment = function(hs) {
+    var frag = document.createDocumentFragment();
+    var template;
+    var hsNickname;
+    var hsScore;
+    for(var i = 0; i < hs.highscore.length; i += 1) {
+        template = document.querySelector("#template-highscoreRow").content.cloneNode(true);
+        hsNickname = template.querySelector(".hs-nickname");
+        hsScore = template.querySelector(".hs-score");
+
+        hsNickname.appendChild(document.createTextNode(hs.highscore[i].nickname));
+        hsScore.appendChild(document.createTextNode(hs.highscore[i].score));
+
+        frag.appendChild(template);
+    }
+
+    return frag;
 };
 
 Quiz.prototype.clearDiv = function(div) {
