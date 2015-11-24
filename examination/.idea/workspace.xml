@@ -24,8 +24,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/source/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2009419">
-              <caret line="45" column="80" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+            <state vertical-scroll-proportion="0.54631084">
+              <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -34,8 +34,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/source/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.074074">
-              <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+            <state vertical-scroll-proportion="-5.6666665">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -44,7 +44,7 @@
       <file leaf-file-name="Quiz.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/source/js/Quiz.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.074074">
+            <state vertical-scroll-proportion="5.6666665">
               <caret line="140" column="61" selection-start-line="140" selection-start-column="61" selection-end-line="140" selection-end-column="61" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
@@ -129,8 +129,8 @@
         <option value="$PROJECT_DIR$/client/source/js/app.js" />
         <option value="$PROJECT_DIR$/client/source/js/Highscore.js" />
         <option value="$PROJECT_DIR$/client/source/js/question.js" />
-        <option value="$PROJECT_DIR$/client/source/index.html" />
         <option value="$PROJECT_DIR$/client/source/js/Quiz.js" />
+        <option value="$PROJECT_DIR$/client/source/index.html" />
       </list>
     </option>
   </component>
@@ -482,14 +482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/source/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.074074">
-          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/source/js/Highscore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.7777777">
@@ -502,7 +494,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/source/js/Quiz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.074074">
+        <state vertical-scroll-proportion="5.6666665">
           <caret line="140" column="61" selection-start-line="140" selection-start-column="61" selection-end-line="140" selection-end-column="61" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
@@ -510,10 +502,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/source/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.6666665">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/source/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2009419">
-          <caret line="45" column="80" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
+        <state vertical-scroll-proportion="0.54631084">
+          <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
           <folding />
         </state>
       </provider>
