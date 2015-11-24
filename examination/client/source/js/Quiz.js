@@ -6,8 +6,9 @@ var Question = require("./question");
 var Ajax = require("./Ajax");
 var Timer = require("./Timer");
 
-function Quiz(username) {
-    this.username = username;
+function Quiz(nickname) {
+    console.log(nickname);
+    this.username = nickname;
     this.timer = undefined;
     this.question = undefined;
     this.nextURL = "http://vhost3.lnu.se:20080/question/1";
@@ -34,11 +35,10 @@ Quiz.prototype.response = function (error, response) {
     if(error) {
         if(error === 404) {
             console.log("End the quiz");
-            //show ending
         }
         else {
             console.log(error);
-            // show some error
+            this.gameOver();
         }
     }
 
@@ -88,9 +88,7 @@ Quiz.prototype.addListener = function() {
     this.form = document.querySelector("#qForm");
 
     this.button.addEventListener("click",this.submit.bind(this));
-    if(this.form) {
-        this.form.addEventListener("keypress", this.getKeyPress.bind(this), true);
-    }
+    this.form.addEventListener("keypress", this.getKeyPress.bind(this), true);
 };
 
 Quiz.prototype.getKeyPress = function(event) {
@@ -107,9 +105,7 @@ Quiz.prototype.submit = function() {
     console.log("time:" + this.totalTime);
     var input;
     this.button.removeEventListener("click", this.submit.bind(this));
-    if(this.form) {
-        this.form.removeEventListener("keypress", this.getKeyPress.bind(this));
-    }
+    this.form.removeEventListener("keypress", this.getKeyPress.bind(this));
 
     if(document.querySelector("#answer")) {
         input = document.querySelector("#answer");

@@ -15,6 +15,7 @@
             </form>
         </div>
     </template>
+
     <template id="template-question-alt">
         <div id="timer"><h1>-</h1></div>
         <div id="question">
@@ -24,14 +25,25 @@
             </form>
         </div>
     </template>
+
     <template id="template-answer">
         <div id="answer-response">
             <p></p>
         </div>
     </template>
 </head>
+
 <body>
 <div id="content">
+    <div id="welcome">
+        <h1 class="welcomeHead">Quizmasterz</h1>
+        <p class="description">This is a quiz that uses an API to get the questions.</p>
+        <form id="qForm">
+            <label>Nickname:
+            <input type="text" id="nickname" /></label>
+            <input type="button" id="submit" value="Go!" />
+        </form>
+    </div>
 </div>
 <script src="javascript/build.js"></script>
 </body>

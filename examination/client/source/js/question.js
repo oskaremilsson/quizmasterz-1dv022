@@ -9,7 +9,6 @@ function Question(obj) {
 }
 
 Question.prototype.print = function() {
-    //this.clearDiv(questionDiv);
     if(this.alt) {
         console.log("has alternatives");
         this.printAltQuestion();
