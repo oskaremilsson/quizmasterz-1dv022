@@ -130,30 +130,34 @@ Quiz.prototype.submit = function() {
 };
 
 Quiz.prototype.gameOver = function() {
+    var hs = new Highscore(this.nickname, this.totalTime);
     console.log("GAME OVER!!!");
-    var div = document.querySelector("#content");
-    /*while(div.hasChildNodes()) {
-        div.removeChild(div.lastChild);
-    }*/
-    this.clearDiv(div);
-    div.appendChild(document.createTextNode("GAME OVER!! Time: " + this.totalTime));
+    this.clearDiv(document.querySelector("#content"));
+
+    var template = document.querySelector("#template-gameOver").content.cloneNode(true);
+    var hsFrag = this.createHighscoreFragment(hs);
+    template.querySelector("table").appendChild(hsFrag);
+
+    document.querySelector("#content").appendChild(template);
 };
 
 Quiz.prototype.gameCompleted = function() {
     var hs = new Highscore(this.nickname, this.totalTime);
+    var template = document.querySelector("#template-quizCompleted").content.cloneNode(true);
+
     if(hs.addToList()) {
         console.log("you made it to the list");
-        var template = document.querySelector("#template-newHighscore").content.cloneNode(true);
-        var hsFrag = this.createHighscoreFragment(hs);
-        console.log(hsFrag);
-        template.querySelector("table").appendChild(hsFrag);
-
-        this.clearDiv(document.querySelector("#content"));
-        document.querySelector("#content").appendChild(template);
+        template = document.querySelector("#template-newHighscore").content.cloneNode(true);
 
     } else {
         console.log("naww :(");
     }
+
+    var hsFrag = this.createHighscoreFragment(hs);
+    template.querySelector("table").appendChild(hsFrag);
+
+    this.clearDiv(document.querySelector("#content"));
+    document.querySelector("#content").appendChild(template);
 };
 
 Quiz.prototype.createHighscoreFragment = function(hs) {
