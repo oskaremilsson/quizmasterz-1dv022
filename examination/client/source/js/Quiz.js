@@ -4,13 +4,16 @@
 "use strict";
 var Question = require("./question");
 var Ajax = require("./Ajax");
+var Timer = require("./Timer");
 
 function Quiz(username) {
     this.username = username;
+    this.timer = undefined;
     this.question = undefined;
     this.nextURL = "http://vhost3.lnu.se:20080/question/1";
     this.button = undefined;
     this.form = undefined;
+    this.totalTime = 0;
 
     this.getQuestion();
 }
@@ -61,8 +64,11 @@ Quiz.prototype.responseQuestion = function(obj) {
 
     this.question = new Question(obj);
     this.question.print();
-    this.nextURL = obj.nextURL;
 
+    this.timer = new Timer(document.querySelector("#timer h1"), 20);
+    this.timer.start();
+
+    this.nextURL = obj.nextURL;
     console.log(this.nextURL);
 
     console.log("Adding listener..");
@@ -104,6 +110,8 @@ Quiz.prototype.getKeyPress = function(event) {
 
 Quiz.prototype.submit = function() {
     console.log("submitting...");
+    this.totalTime += this.timer.stop();
+    console.log("time:" + this.totalTime);
     var input;
     this.button.removeEventListener("click", this.submit.bind(this));
     if(this.form) {
