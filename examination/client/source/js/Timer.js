@@ -2,9 +2,10 @@
  * Created by Oskar on 2015-11-24.
  */
 
-function Timer(element, time) {
+function Timer(owner, element, time) {
     this.time = time;
     this.element = element;
+    this.owner = owner;
     this.startTime = new Date().getTime();
     this.interval = undefined;
 }
@@ -16,11 +17,14 @@ Timer.prototype.start = function() {
 Timer.prototype.run = function() {
     var now = new Date().getTime();
     var diff = (now - this.startTime)/1000;
-    console.log(this.startTime);
+    var showTime = this.time - diff;
+
     if(diff >= this.time) {
+        showTime = 0;
         clearInterval(this.interval);
+        this.owner.gameOver();
     }
-    this.print(this.time - diff);
+    this.print(showTime);
 };
 
 Timer.prototype.stop = function() {

@@ -65,7 +65,7 @@ Quiz.prototype.responseQuestion = function(obj) {
     this.question = new Question(obj);
     this.question.print();
 
-    this.timer = new Timer(document.querySelector("#timer h1"), 20);
+    this.timer = new Timer(this, document.querySelector("#timer h1"), 20);
     this.timer.start();
 
     this.nextURL = obj.nextURL;
@@ -96,7 +96,7 @@ Quiz.prototype.addListener = function() {
 
     this.button.addEventListener("click",this.submit.bind(this));
     if(this.form) {
-        this.form.addEventListener("keypress", this.getKeyPress.bind(this));
+        this.form.addEventListener("keypress", this.getKeyPress.bind(this), true);
     }
 };
 
@@ -133,6 +133,15 @@ Quiz.prototype.submit = function() {
         }};
     var responseFunction = this.response.bind(this);
     Ajax.req(config, responseFunction);
+};
+
+Quiz.prototype.gameOver = function() {
+    console.log("GAME OVER!!!");
+    var div = document.querySelector("#content");
+    while(div.hasChildNodes()) {
+        div.removeChild(div.lastChild);
+    }
+    div.appendChild(document.createTextNode("GAME OVER!! Time: " + this.totalTime));
 };
 
 
