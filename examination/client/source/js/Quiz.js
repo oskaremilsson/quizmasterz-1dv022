@@ -45,9 +45,9 @@ Quiz.prototype.response = function (error, response) {
         }
     }
 
-    if(response) {
+    else {
+        console.log(response);
         var obj = JSON.parse(response);
-
         this.nextURL = obj.nextURL;
         console.log(this.nextURL);
 
@@ -55,7 +55,9 @@ Quiz.prototype.response = function (error, response) {
             this.responseQuestion(obj);
         }
         else {
-            this.responseAnswer(obj);
+            if(this.nextURL || obj.message === "Correct answer!") {
+                this.responseAnswer(obj);
+            }
         }
     }
 
@@ -130,13 +132,17 @@ Quiz.prototype.submit = function() {
 };
 
 Quiz.prototype.gameOver = function() {
-    var hs = new Highscore(this.nickname, this.totalTime);
+    var hs = new Highscore(this.nickname);
     console.log("GAME OVER!!!");
     this.clearDiv(document.querySelector("#content"));
 
     var template = document.querySelector("#template-gameOver").content.cloneNode(true);
-    var hsFrag = this.createHighscoreFragment(hs);
-    template.querySelector("table").appendChild(hsFrag);
+
+    if(hs.highscore.length > 0 ){
+        template.querySelector("h2").appendChild(document.createTextNode("Highscore"));
+        var hsFrag = this.createHighscoreFragment(hs);
+        template.querySelector("table").appendChild(hsFrag);
+    }
 
     document.querySelector("#content").appendChild(template);
 };
@@ -149,12 +155,13 @@ Quiz.prototype.gameCompleted = function() {
         console.log("you made it to the list");
         template = document.querySelector("#template-newHighscore").content.cloneNode(true);
 
-    } else {
-        console.log("naww :(");
     }
 
-    var hsFrag = this.createHighscoreFragment(hs);
-    template.querySelector("table").appendChild(hsFrag);
+    if(hs.highscore.length > 0) {
+        template.querySelector("h2").appendChild(document.createTextNode("Highscore"));
+        var hsFrag = this.createHighscoreFragment(hs);
+        template.querySelector("table").appendChild(hsFrag);
+    }
 
     this.clearDiv(document.querySelector("#content"));
     document.querySelector("#content").appendChild(template);

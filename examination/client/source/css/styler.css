@@ -15,6 +15,10 @@ body {
     margin: 0 auto;
     max-width: 500px;
     clear: both;
+    margin-top: 100px;
+    border: 2px solid #000;
+    border-radius: 15px;
+    padding: 20px;
 }
 
 .description {
@@ -58,7 +62,6 @@ input[type="button"] {
     background: #37d61d;
     border: 2px solid #62ef31;
     font-size: 35px;
-    clear:both;
 }
 
 input[type="button"]:active {
@@ -72,14 +75,51 @@ input[type="radio"] {
     width: 40px;
 }
 
-.alternativeRow {
-}
-
 .radio-label {
-    max-width: 250px;
-    word-wrap: break-word;
+    word-wrap: break-word !important;
     height: 50px;
     vertical-align:top;
     margin-top: 10px;
     font-size: 25px !important;
 }
+
+table {
+    width: 100%;
+    font-size: 24px;
+    margin: 10px;
+    text-align: center;
+}
+
+.hs-nickname {
+    padding-top: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+td {
+    border-radius: 4px;
+    background: #e4e3dd;
+}
+
+.hs-score:after {
+    content: "sec";
+}
+
+.newGame {
+    border-radius: 15px;
+    margin: 10px;
+    height: 50px;
+    padding: 10px;
+    width: 200px;
+    background: #ebd11f;
+    border: 2px solid #f7dd2e;
+    font-size: 35px;
+    text-align: center;
+}
+
+.newGame a {
+    padding-top: 10px;
+    color: #000000;
+    text-decoration: none;
+}
+

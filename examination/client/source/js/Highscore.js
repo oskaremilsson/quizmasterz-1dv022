@@ -36,7 +36,7 @@ Highscore.prototype.readFromFile = function() {
 
 Highscore.prototype.isHighscore = function() {
     var isHighscore = false;
-    if(this.highscore.length === 0) {
+    if(this.highscore.length === 0 && this.score) {
         console.log("first entry");
         isHighscore = true;
     } else {
