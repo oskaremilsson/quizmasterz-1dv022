@@ -148,7 +148,7 @@ Quiz.prototype.gameOver = function() {
 };
 
 Quiz.prototype.gameCompleted = function() {
-    var hs = new Highscore(this.nickname, this.totalTime);
+    var hs = new Highscore(this.nickname, this.totalTime.toFixed(3));
     var template = document.querySelector("#template-quizCompleted").content.cloneNode(true);
 
     if(hs.addToList()) {

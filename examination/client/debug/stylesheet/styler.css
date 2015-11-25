@@ -107,9 +107,10 @@ td {
 
 .newGame {
     border-radius: 15px;
-    margin: 10px;
+    margin: 0 auto;
     height: 50px;
     padding: 10px;
+    padding-top: 20px;
     width: 200px;
     background: #ebd11f;
     border: 2px solid #f7dd2e;
