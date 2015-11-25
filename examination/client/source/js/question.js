@@ -65,15 +65,6 @@ Question.prototype.getAltFrag = function() {
     console.log(this.alt);
     for(var alt in this.alt) {
         if(this.alt.hasOwnProperty(alt)) {
-            /*label = document.createElement("label");
-            input = document.createElement("input");
-            input.setAttribute("type", "radio");
-            input.setAttribute("name", "alternative");
-            input.setAttribute("value", alt);
-            //p.appendChild(input);
-            label.appendChild(document.createTextNode(this.alt[alt]));
-            inputFrag.appendChild(label);*/
-
             //get the template for alternatives
             input = document.querySelector("#template-alternative").content.cloneNode(true);
             console.log(input);

@@ -164,18 +164,18 @@ Quiz.prototype.submit = function() {
     //save input depending on the type of question
     if(document.querySelector("#answer")) {
         //get the form input
-        input = document.querySelector("#answer");
+        input = document.querySelector("#answer").value;
     }
     else {
         //get the checked readiobutton
-        input = document.querySelector("input[name='alternative']:checked");
+        input = document.querySelector("input[name='alternative']:checked").value;
     }
 
     //set the config to be sent to server and send a request
     var config = {method: "POST",
         url: this.nextURL,
         data: {
-            answer: input.value
+            answer: input
         }};
     var responseFunction = this.response.bind(this);
     Ajax.req(config, responseFunction);

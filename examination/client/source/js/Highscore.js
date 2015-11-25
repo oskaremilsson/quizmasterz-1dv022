@@ -2,16 +2,6 @@
  * Created by Oskar on 2015-11-24.
  */
 
-function sortFormula(a,b) {
-    if (a.score < b.score) {
-        return -1;
-    }
-    if (a.score > b.score) {
-        return 1;
-    }
-    return 0;
-}
-
 /**
  * Highscore constructor
  * @param nickname{string}, the nickname
@@ -53,9 +43,10 @@ Highscore.prototype.readFromFile = function() {
 Highscore.prototype.isHighscore = function() {
     var isHighscore = false;
     if(this.highscore.length === 0) {
-        console.log("first entry");
+        //highscore is empty, therefore new highscore
         isHighscore = true;
     } else {
+        //get the score last in the list
         var lastScore = this.highscore[this.highscore.length - 1].score;
         if(this.score < lastScore || this.highscore.length < 5) {
             isHighscore = true;
