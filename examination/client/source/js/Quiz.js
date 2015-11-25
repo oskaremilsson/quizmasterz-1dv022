@@ -45,7 +45,7 @@ Quiz.prototype.response = function (error, response) {
         }
     }
 
-    else {
+    if(response) {
         console.log(response);
         var obj = JSON.parse(response);
         this.nextURL = obj.nextURL;
@@ -154,11 +154,14 @@ Quiz.prototype.gameCompleted = function() {
     if(hs.addToList()) {
         console.log("you made it to the list");
         template = document.querySelector("#template-newHighscore").content.cloneNode(true);
-
     }
 
     if(hs.highscore.length > 0) {
-        template.querySelector("h2").appendChild(document.createTextNode("Highscore"));
+        var h1 = template.querySelector(".time");
+        var text = document.createTextNode(this.totalTime.toFixed(3));
+        h1.appendChild(text);
+
+        template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));
         var hsFrag = this.createHighscoreFragment(hs);
         template.querySelector("table").appendChild(hsFrag);
     }

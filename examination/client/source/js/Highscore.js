@@ -36,7 +36,7 @@ Highscore.prototype.readFromFile = function() {
 
 Highscore.prototype.isHighscore = function() {
     var isHighscore = false;
-    if(this.highscore.length === 0 && this.score) {
+    if(this.highscore.length === 0) {
         console.log("first entry");
         isHighscore = true;
     } else {
@@ -65,7 +65,7 @@ Highscore.prototype.addToList = function() {
 
         //push the new and sort the array
         this.highscore.push(thisScore);
-        this.highscore.sort(sortFormula);
+        this.highscore = this.highscore.sort(function(a,b) {return a.score - b.score;});
 
         //call to save it
         this.saveToFile();

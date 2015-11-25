@@ -43,7 +43,8 @@
     <template id="template-newHighscore">
         <div>
             <h1>New Highscore!</h1>
-            <h2></h2>
+            <h2>You finished the game in <span class="time"></span> seconds</h2>
+            <h2 class="hs-title"></h2>
             <table>
             </table>
             <p class="newGame"><a href="?">New Game</a></p>
@@ -52,8 +53,8 @@
 
     <template id="template-quizCompleted">
         <div>
-            <h1>You finished the game in <span class="time"></span> seconds</h1>
-            <h2></h2>
+            <h1 class="show-score">You finished the game in <span class="time"></span> seconds</h1>
+            <h2 class="hs-title"></h2>
             <table>
             </table>
             <p class="newGame"><a href="?">New Game</a></p>
@@ -63,7 +64,7 @@
     <template id="template-gameOver">
         <div>
             <h1>Wrong answer!</h1>
-            <h2></h2>
+            <h2 class="hs-title"></h2>
             <table>
             </table>
             <p class="newGame"><a href="?">New Game</a></p>
