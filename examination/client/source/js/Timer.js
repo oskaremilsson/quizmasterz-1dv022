@@ -24,7 +24,7 @@ Timer.prototype.run = function() {
         clearInterval(this.interval);
         this.owner.gameOver();
     }
-    this.print(showTime);
+    this.print(showTime.toFixed(1));
 };
 
 Timer.prototype.stop = function() {

@@ -69,7 +69,7 @@ Quiz.prototype.responseQuestion = function(obj) {
     this.question = new Question(obj);
     this.question.print();
 
-    this.timer = new Timer(this, document.querySelector("#timer h1"), 500);
+    this.timer = new Timer(this, document.querySelector("#timer h1"), 20);
     this.timer.start();
 
     console.log("Adding listener..");
