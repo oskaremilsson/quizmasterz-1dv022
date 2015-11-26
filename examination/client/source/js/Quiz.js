@@ -35,6 +35,7 @@ Quiz.prototype.getQuestion = function () {
     console.log(url);
     var config = {method: "GET", url: url};
     var responseFunction = this.response.bind(this);
+
     Ajax.req(config, responseFunction);
 };
 
@@ -48,17 +49,8 @@ Quiz.prototype.response = function (error, response) {
 
     //handle errors (404 means no more questions)
     if(error) {
-        if(error === 404) {
-            console.log("End the quiz");
-
-            //present the completed quiz to user
-            this.gameCompleted();
-        }
-        else {
-            console.log(error);
-            //present the gameover-view to user
-            this.gameOver();
-        }
+        //present the gameover-view to user
+        this.gameOver();
     }
 
     //handle the response string
@@ -118,9 +110,14 @@ Quiz.prototype.responseAnswer = function(obj) {
 
     content.appendChild(template);
 
-    //Request a new question, but with a delay
-    var newQuestion = this.getQuestion.bind(this);
-    setTimeout(newQuestion, 1000);
+    if(this.nextURL) {
+        //Request a new question, but with a delay
+        var newQuestion = this.getQuestion.bind(this);
+        setTimeout(newQuestion, 1000);
+    }
+    else {
+        this.gameCompleted();
+    }
 };
 
 /**
