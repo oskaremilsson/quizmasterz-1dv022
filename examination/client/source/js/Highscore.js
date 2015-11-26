@@ -25,7 +25,6 @@ Highscore.prototype.readFromFile = function() {
     if(hsFile) {
         //parse file into JSON
         var json = JSON.parse(hsFile);
-        console.log(json);
 
         //fill the highscore-array with entries
         for (var nickname in json) {
@@ -70,7 +69,7 @@ Highscore.prototype.addToList = function() {
             score: this.score,
             date: date
         };
-        console.log(thisScore);
+
         //delete the last position of the highscore array
         if(this.highscore.length === 5) {
             //remove the one last
@@ -124,9 +123,12 @@ Highscore.prototype.createHighscoreFragment = function(isNew) {
         date = new Date(this.highscore[i].date);
         hsDate.appendChild(document.createTextNode(date.toDateString()));
 
-        if(date.valueOf() > latestEntry.valueOf()) {
-            highlightIndex = i;
-            latestEntry = date;
+        if (isNew) {
+            //check for the letest entry
+            if (date.valueOf() > latestEntry.valueOf()) {
+                highlightIndex = i;
+                latestEntry = date;
+            }
         }
 
         //append row to fragment
@@ -134,8 +136,8 @@ Highscore.prototype.createHighscoreFragment = function(isNew) {
     }
 
     if(isNew) {
+        //highlight the new highscore in the list
         frag.querySelectorAll("tr")[highlightIndex].classList.add("highlight");
-        console.log("Highlighta position: " + highlightIndex);
     }
 
     return frag;

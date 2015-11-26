@@ -20,7 +20,6 @@ function Question(obj) {
 Question.prototype.print = function() {
     //statement to call the rightful printfunction
     if(this.alt) {
-        console.log("has alternatives");
         this.printAltQuestion();
     }
     else {
@@ -48,7 +47,6 @@ Question.prototype.printAltQuestion = function() {
 
     //call the function that handles the alternatives
     var inputFrag = this.getAltFrag();
-    console.log(template.querySelector("#submit"));
     template.querySelector("#qForm").insertBefore(inputFrag, template.querySelector("#submit"));
     document.querySelector("#content").appendChild(template);
 };
@@ -62,12 +60,10 @@ Question.prototype.getAltFrag = function() {
     var input;
     var label;
 
-    console.log(this.alt);
     for(var alt in this.alt) {
         if(this.alt.hasOwnProperty(alt)) {
             //get the template for alternatives
             input = document.querySelector("#template-alternative").content.cloneNode(true);
-            console.log(input);
             //append the alternative
             input.querySelector("input").setAttribute("value", alt);
             label = input.querySelector("label");

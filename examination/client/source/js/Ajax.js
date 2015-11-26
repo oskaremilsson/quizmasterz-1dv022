@@ -24,7 +24,6 @@ function req(config, callback) {
 
     //open a request from the config
     r.open(config.method, config.url);
-    console.log(config);
 
     if(config.data){
         //send the data as JSON to the server

@@ -13,7 +13,6 @@ var Highscore = require("./Highscore");
  * @constructor
  */
 function Quiz(nickname) {
-    console.log(nickname);
     this.nickname = nickname;
     this.timer = undefined;
     this.question = undefined;
@@ -30,10 +29,7 @@ function Quiz(nickname) {
  * Function to send a request for a new question
  */
 Quiz.prototype.getQuestion = function () {
-    console.log("asking..");
-    var url = this.nextURL;
-    console.log(url);
-    var config = {method: "GET", url: url};
+    var config = {method: "GET", url: this.nextURL};
     var responseFunction = this.response.bind(this);
 
     Ajax.req(config, responseFunction);
@@ -45,8 +41,6 @@ Quiz.prototype.getQuestion = function () {
  * @param response{string}, response string to parse JSON from
  */
 Quiz.prototype.response = function (error, response) {
-    console.log("response...");
-
     //handle errors (404 means no more questions)
     if(error) {
         //present the gameover-view to user
@@ -55,11 +49,9 @@ Quiz.prototype.response = function (error, response) {
 
     //handle the response string
     if(response) {
-        console.log(response);
         //pasre to JSON
         var obj = JSON.parse(response);
         this.nextURL = obj.nextURL;
-        console.log(this.nextURL);
 
         //statement to call the rightful function on the response
         if(obj.question) {
@@ -91,7 +83,6 @@ Quiz.prototype.responseQuestion = function(obj) {
     this.timer.start();
 
     //Add linsteners for the form
-    console.log("Adding listener..");
     this.addListener();
 };
 
@@ -137,13 +128,10 @@ Quiz.prototype.addListener = function() {
 Quiz.prototype.submit = function(event) {
     //If the trigger is enter or click do the submit
     if (event.which === 13 || event.keyCode === 13 || event.type === "click") {
-        console.log("got enter");
         //prevent the form to reload page on enter
         event.preventDefault();
 
-        console.log("submitting...");
         this.totalTime += this.timer.stop();
-        console.log("time:" + this.totalTime);
         var input;
 
         //remove the listeners to prevent double-submit
@@ -179,7 +167,6 @@ Quiz.prototype.submit = function(event) {
 Quiz.prototype.gameOver = function() {
     //create a highscore module to show it to the user
     var hs = new Highscore(this.nickname);
-    console.log("GAME OVER!!!");
     this.clearDiv(document.querySelector("#content"));
 
     //get the game over template
@@ -214,7 +201,6 @@ Quiz.prototype.gameCompleted = function() {
     }
 
     if(isNew) {
-        console.log("you made it to the list");
         var newHS = document.createElement("h1");
         newHS.appendChild(document.createTextNode("New Highscore!"));
         var div = template.querySelector("div");

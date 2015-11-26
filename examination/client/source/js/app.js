@@ -9,8 +9,6 @@ var q;
 
 function submit(event) {
     if (event.which === 13 || event.keyCode === 13 || event.type === "click") {
-        console.log("submitting");
-
         //disable forms action so page wont reload with enter
         event.preventDefault();
 
