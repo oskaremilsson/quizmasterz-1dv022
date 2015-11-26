@@ -2,7 +2,7 @@
  * Created by Oskar on 2015-11-23.
  */
 "use strict";
-var Question = require("./question");
+var Question = require("./Question");
 var Ajax = require("./Ajax");
 var Timer = require("./Timer");
 var Highscore = require("./Highscore");
@@ -130,55 +130,50 @@ Quiz.prototype.addListener = function() {
     this.button = document.querySelector("#submit");
     this.form = document.querySelector("#qForm");
 
-    this.button.addEventListener("click",this.submit.bind(this));
-    this.form.addEventListener("keypress", this.getKeyPress.bind(this), true);
-};
-
-/**
- * Function to handle keypress
- * @param event{Object}, eventhandlerobject
- */
-Quiz.prototype.getKeyPress = function(event) {
-    if (event.which === 13 || event.keyCode === 13) {
-        console.log("got enter");
-        //prevent the form to reload page on enter
-        event.preventDefault();
-
-        this.submit();
-    }
+    this.button.addEventListener("click",this.submit.bind(this), true);
+    this.form.addEventListener("keypress", this.submit.bind(this), true);
 };
 
 /**
  * Function to handle when submit is triggered
  */
-Quiz.prototype.submit = function() {
-    console.log("submitting...");
-    this.totalTime += this.timer.stop();
-    console.log("time:" + this.totalTime);
-    var input;
+Quiz.prototype.submit = function(event) {
+    //If the trigger is enter or click do the submit
+    if (event.which === 13 || event.keyCode === 13 || event.type === "click") {
+        console.log("got enter");
+        //prevent the form to reload page on enter
+        event.preventDefault();
 
-    //remove the listeners to prevent double-submit
-    this.button.removeEventListener("click", this.submit.bind(this));
-    this.form.removeEventListener("keypress", this.getKeyPress.bind(this));
+        console.log("submitting...");
+        this.totalTime += this.timer.stop();
+        console.log("time:" + this.totalTime);
+        var input;
 
-    //save input depending on the type of question
-    if(document.querySelector("#answer")) {
-        //get the form input
-        input = document.querySelector("#answer").value;
+        //remove the listeners to prevent double-submit
+        this.button.removeEventListener("click", this.submit.bind(this));
+        this.form.removeEventListener("keypress", this.submit.bind(this));
+
+        //save input depending on the type of question
+        if (document.querySelector("#answer")) {
+            //get the form input
+            input = document.querySelector("#answer").value;
+        }
+        else {
+            //get the checked readiobutton
+            input = document.querySelector("input[name='alternative']:checked").value;
+        }
+
+        //set the config to be sent to server and send a request
+        var config = {
+            method: "POST",
+            url: this.nextURL,
+            data: {
+                answer: input
+            }
+        };
+        var responseFunction = this.response.bind(this);
+        Ajax.req(config, responseFunction);
     }
-    else {
-        //get the checked readiobutton
-        input = document.querySelector("input[name='alternative']:checked").value;
-    }
-
-    //set the config to be sent to server and send a request
-    var config = {method: "POST",
-        url: this.nextURL,
-        data: {
-            answer: input
-        }};
-    var responseFunction = this.response.bind(this);
-    Ajax.req(config, responseFunction);
 };
 
 /**
