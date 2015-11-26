@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Examination 2</title>
-    <link rel="stylesheet" type="text/css" href="stylesheet/styler.css">
-    <link rel="stylesheet" type="text/css" href="stylesheet/loading.css">
+    <link id="baseStyle" rel="stylesheet" type="text/css" href="stylesheet/playful.css">
+    <link id="loadingStyle" rel="stylesheet" type="text/css" href="stylesheet/playful_loading.css">
     <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 
     <template id="template-question">
@@ -96,6 +96,14 @@
                 <input type="text" id="nickname" maxlength="12" /></label>
                 <input type="button" id="submit" value="Go!" />
             </form>
+
+            <div class="styled-select">
+                <select id="theme-selector">
+                    <option disabled selected> -- Choose a theme -- </option>
+                    <option value="playful">Playful</option>
+                    <option value="hacker">Hacker</option>
+                </select>
+            </div>
         </div>
     </div>
 </div>
