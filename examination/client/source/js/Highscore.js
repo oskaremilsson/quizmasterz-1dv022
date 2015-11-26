@@ -65,12 +65,14 @@ Highscore.prototype.addToList = function() {
     if(this.isHighscore()) {
         console.log("isHighscore, adding to list..");
 
-        //save the nickname and score into an object
+        //save the nickname, score and datestamp into an object
+        var date = new Date();
         var thisScore = {
             nickname: this.nickname,
-            score: this.score
+            score: this.score,
+            date: date
         };
-
+        console.log(thisScore);
         //delete the last position of the highscore array
         if(this.highscore.length === 5) {
             //remove the one last
@@ -105,15 +107,22 @@ Highscore.prototype.createHighscoreFragment = function() {
     var template;
     var hsNickname;
     var hsScore;
+    var hsDate;
+    var date;
+
     for(var i = 0; i < this.highscore.length; i += 1) {
         //get the template for a table-row
         template = document.querySelector("#template-highscoreRow").content.cloneNode(true);
         hsNickname = template.querySelector(".hs-nickname");
         hsScore = template.querySelector(".hs-score");
+        hsDate = template.querySelector(".hs-date");
 
         //append the nickname and score to the row
         hsNickname.appendChild(document.createTextNode(this.highscore[i].nickname));
         hsScore.appendChild(document.createTextNode(this.highscore[i].score));
+
+        date = new Date(this.highscore[i].date);
+        hsDate.appendChild(document.createTextNode(date.toDateString()));
 
         //append row to fragment
         frag.appendChild(template);
