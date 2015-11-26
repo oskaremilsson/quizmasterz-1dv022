@@ -143,3 +143,6 @@ td:first-child::before {
     text-decoration: none;
 }
 
+.highlight td{
+    background: #f3e68e;
+}

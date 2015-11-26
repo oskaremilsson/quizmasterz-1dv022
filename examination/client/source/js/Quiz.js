@@ -202,26 +202,30 @@ Quiz.prototype.gameOver = function() {
 Quiz.prototype.gameCompleted = function() {
     //create new highscore module to handle it
     var hs = new Highscore(this.nickname, this.totalTime.toFixed(3));
+    var isNew = hs.addToList();
+
     var template = document.querySelector("#template-quizCompleted").content.cloneNode(true);
 
-    //if the score makes it to the highscore, change temple to new highscore
-    if(hs.addToList()) {
-        console.log("you made it to the list");
-        template = document.querySelector("#template-newHighscore").content.cloneNode(true);
-    }
-
-    //show the highscore if the highscore has entries
+    //get the highscore if the highscore has entries
     if(hs.highscore.length > 0) {
-        var h1 = template.querySelector(".time");
-        var text = document.createTextNode(this.totalTime.toFixed(3));
-        h1.appendChild(text);
-
         template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));
-        var hsFrag = hs.createHighscoreFragment();
+        var hsFrag = hs.createHighscoreFragment(isNew);
         template.querySelector("table").appendChild(hsFrag);
     }
 
+    if(isNew) {
+        console.log("you made it to the list");
+        var newHS = document.createElement("h1");
+        newHS.appendChild(document.createTextNode("New Highscore!"));
+        var div = template.querySelector("div");
+        div.insertBefore(newHS, div.firstChild);
+    }
+
     this.clearDiv(document.querySelector("#content"));
+
+    var h1 = template.querySelector(".time");
+    var text = document.createTextNode(this.totalTime.toFixed(3));
+    h1.appendChild(text);
     document.querySelector("#content").appendChild(template);
 };
 

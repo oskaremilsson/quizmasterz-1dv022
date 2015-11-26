@@ -63,8 +63,6 @@ Highscore.prototype.addToList = function() {
     var added = false;
     //call the isHighscore to check if score should be added
     if(this.isHighscore()) {
-        console.log("isHighscore, adding to list..");
-
         //save the nickname, score and datestamp into an object
         var date = new Date();
         var thisScore = {
@@ -102,13 +100,15 @@ Highscore.prototype.saveToFile = function() {
  * Function to get the highscorefragment containing the highscore-part of table
  * @returns {DocumentFragment}
  */
-Highscore.prototype.createHighscoreFragment = function() {
+Highscore.prototype.createHighscoreFragment = function(isNew) {
     var frag = document.createDocumentFragment();
     var template;
     var hsNickname;
     var hsScore;
     var hsDate;
     var date;
+    var latestEntry = new Date(this.highscore[0].date);
+    var highlightIndex = 0;
 
     for(var i = 0; i < this.highscore.length; i += 1) {
         //get the template for a table-row
@@ -124,8 +124,18 @@ Highscore.prototype.createHighscoreFragment = function() {
         date = new Date(this.highscore[i].date);
         hsDate.appendChild(document.createTextNode(date.toDateString()));
 
+        if(date.valueOf() > latestEntry.valueOf()) {
+            highlightIndex = i;
+            latestEntry = date;
+        }
+
         //append row to fragment
         frag.appendChild(template);
+    }
+
+    if(isNew) {
+        frag.querySelectorAll("tr")[highlightIndex].classList.add("highlight");
+        console.log("Highlighta position: " + highlightIndex);
     }
 
     return frag;
