@@ -96,4 +96,30 @@ Highscore.prototype.saveToFile = function() {
     localStorage.setItem("hs", JSON.stringify(this.highscore));
 };
 
+/**
+ * Function to get the highscorefragment containing the highscore-part of table
+ * @returns {DocumentFragment}
+ */
+Highscore.prototype.createHighscoreFragment = function() {
+    var frag = document.createDocumentFragment();
+    var template;
+    var hsNickname;
+    var hsScore;
+    for(var i = 0; i < this.highscore.length; i += 1) {
+        //get the template for a table-row
+        template = document.querySelector("#template-highscoreRow").content.cloneNode(true);
+        hsNickname = template.querySelector(".hs-nickname");
+        hsScore = template.querySelector(".hs-score");
+
+        //append the nickname and score to the row
+        hsNickname.appendChild(document.createTextNode(this.highscore[i].nickname));
+        hsScore.appendChild(document.createTextNode(this.highscore[i].score));
+
+        //append row to fragment
+        frag.appendChild(template);
+    }
+
+    return frag;
+};
+
 module.exports = Highscore;

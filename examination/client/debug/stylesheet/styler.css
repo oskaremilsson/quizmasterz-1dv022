@@ -92,17 +92,32 @@ table {
     font-size: 24px;
     margin: 10px;
     text-align: center;
+
+    counter-reset: rowNumber;
+}
+
+table tr {
+    counter-increment: rowNumber;
+}
+
+td {
+    border-radius: 4px;
+    background: #e4e3dd;
+}
+
+td:first-child::before {
+    content: counter(rowNumber);
+    float: left;
+}
+
+.hs-title {
+    text-align: center;
 }
 
 .hs-nickname {
     padding-top: 5px;
     font-weight: bold;
     text-transform: uppercase;
-}
-
-td {
-    border-radius: 4px;
-    background: #e4e3dd;
 }
 
 .hs-score:after {

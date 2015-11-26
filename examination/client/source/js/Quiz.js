@@ -191,7 +191,7 @@ Quiz.prototype.gameOver = function() {
     //if the highscore has entries add them to the template
     if(hs.highscore.length > 0 ){
         template.querySelector("h2").appendChild(document.createTextNode("Highscore"));
-        var hsFrag = this.createHighscoreFragment(hs);
+        var hsFrag = hs.createHighscoreFragment();
         template.querySelector("table").appendChild(hsFrag);
     }
 
@@ -220,39 +220,12 @@ Quiz.prototype.gameCompleted = function() {
         h1.appendChild(text);
 
         template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));
-        var hsFrag = this.createHighscoreFragment(hs);
+        var hsFrag = hs.createHighscoreFragment();
         template.querySelector("table").appendChild(hsFrag);
     }
 
     this.clearDiv(document.querySelector("#content"));
     document.querySelector("#content").appendChild(template);
-};
-
-/**
- * Function to get the highscorefragment to present to user
- * @param hs{Object}, Highscore object
- * @returns {DocumentFragment}
- */
-Quiz.prototype.createHighscoreFragment = function(hs) {
-    var frag = document.createDocumentFragment();
-    var template;
-    var hsNickname;
-    var hsScore;
-    for(var i = 0; i < hs.highscore.length; i += 1) {
-        //get the template for a table-row
-        template = document.querySelector("#template-highscoreRow").content.cloneNode(true);
-        hsNickname = template.querySelector(".hs-nickname");
-        hsScore = template.querySelector(".hs-score");
-
-        //append the nickname and score to the row
-        hsNickname.appendChild(document.createTextNode(hs.highscore[i].nickname));
-        hsScore.appendChild(document.createTextNode(hs.highscore[i].score));
-
-        //append row to fragment
-        frag.appendChild(template);
-    }
-
-    return frag;
 };
 
 /**
