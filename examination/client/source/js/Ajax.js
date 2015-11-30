@@ -25,7 +25,7 @@ function req(config, callback) {
     //open a request from the config
     r.open(config.method, config.url);
 
-    if(config.data){
+    if (config.data) {
         //send the data as JSON to the server
         r.setRequestHeader("Content-Type", "application/json");
         r.send(JSON.stringify(config.data));
@@ -34,6 +34,5 @@ function req(config, callback) {
         r.send(null);
     }
 }
-
 
 module.exports.req = req;

@@ -22,13 +22,13 @@ function Highscore(nickname, score) {
  */
 Highscore.prototype.readFromFile = function() {
     var hsFile = localStorage.getItem("hs");
-    if(hsFile) {
+    if (hsFile) {
         //parse file into JSON
         var json = JSON.parse(hsFile);
 
         //fill the highscore-array with entries
         for (var nickname in json) {
-            if(json.hasOwnProperty(nickname)) {
+            if (json.hasOwnProperty(nickname)) {
                 this.highscore.push(json[nickname]);
             }
         }
@@ -41,7 +41,7 @@ Highscore.prototype.readFromFile = function() {
  */
 Highscore.prototype.isHighscore = function() {
     var isHighscore = false;
-    if(this.highscore.length === 0) {
+    if (this.highscore.length === 0) {
         //highscore is empty, therefore new highscore
         isHighscore = true;
     } else {
@@ -49,10 +49,11 @@ Highscore.prototype.isHighscore = function() {
         var lastScore = this.highscore[this.highscore.length - 1].score;
 
         //check if highscore
-        if(parseFloat(this.score) < parseFloat(lastScore) || this.highscore.length < 5) {
+        if (parseFloat(this.score) < parseFloat(lastScore) || this.highscore.length < 5) {
             isHighscore = true;
         }
     }
+
     return isHighscore;
 };
 
@@ -62,8 +63,9 @@ Highscore.prototype.isHighscore = function() {
  */
 Highscore.prototype.addToList = function() {
     var added = false;
+
     //call the isHighscore to check if score should be added
-    if(this.isHighscore()) {
+    if (this.isHighscore()) {
         //save the nickname, score and datestamp into an object
         var date = new Date();
         var thisScore = {
@@ -73,20 +75,21 @@ Highscore.prototype.addToList = function() {
         };
 
         //delete the last position of the highscore array
-        if(this.highscore.length === 5) {
+        if (this.highscore.length === 5) {
             //remove the one last
             this.highscore.splice(-1, 1);
         }
 
         //push the new and sort the array
         this.highscore.push(thisScore);
-        this.highscore = this.highscore.sort(function(a,b) {return a.score - b.score;});
+        this.highscore = this.highscore.sort(function(a, b) {return a.score - b.score;});
 
         //call to save it
         this.saveToFile();
 
         added = true;
     }
+
     return added;
 };
 
@@ -111,7 +114,7 @@ Highscore.prototype.createHighscoreFragment = function(isNew) {
     var latestEntry = new Date(this.highscore[0].date);
     var highlightIndex = 0;
 
-    for(var i = 0; i < this.highscore.length; i += 1) {
+    for (var i = 0; i < this.highscore.length; i += 1) {
         //get the template for a table-row
         template = document.querySelector("#template-highscoreRow").content.cloneNode(true);
         hsNickname = template.querySelector(".hs-nickname");
@@ -137,7 +140,7 @@ Highscore.prototype.createHighscoreFragment = function(isNew) {
         frag.appendChild(template);
     }
 
-    if(isNew) {
+    if (isNew) {
         //highlight the new highscore in the list
         frag.querySelectorAll("tr")[highlightIndex].classList.add("highlight");
     }

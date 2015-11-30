@@ -32,12 +32,12 @@ Timer.prototype.run = function() {
     var now = new Date().getTime();
 
     //count the difference from start to now
-    var diff = (now - this.startTime)/1000;
+    var diff = (now - this.startTime) / 1000;
 
     //count the time - difference to show countdown
     var showTime = this.time - diff;
 
-    if(diff >= this.time) {
+    if (diff >= this.time) {
         //time if up
         showTime = 0;
         clearInterval(this.interval);
@@ -52,13 +52,13 @@ Timer.prototype.run = function() {
 
 /**
  * Function that stops the timer before its over
- * @returns {number}, the difference in decounds
+ * @returns {number}, the difference in seconds
  */
 Timer.prototype.stop = function() {
     clearInterval(this.interval);
     var now = new Date().getTime();
 
-    return (now - this.startTime)/1000;
+    return (now - this.startTime) / 1000;
 };
 
 /**

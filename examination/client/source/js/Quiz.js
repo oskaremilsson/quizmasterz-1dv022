@@ -28,7 +28,7 @@ function Quiz(nickname) {
 /**
  * Function to send a request for a new question
  */
-Quiz.prototype.getQuestion = function () {
+Quiz.prototype.getQuestion = function() {
     var config = {method: "GET", url: this.nextURL};
     var responseFunction = this.response.bind(this);
 
@@ -40,25 +40,25 @@ Quiz.prototype.getQuestion = function () {
  * @param error{Number}, errorcode, null if no error
  * @param response{string}, response string to parse JSON from
  */
-Quiz.prototype.response = function (error, response) {
+Quiz.prototype.response = function(error, response) {
     //handle errors (404 means no more questions)
-    if(error) {
+    if (error) {
         //present the gameover-view to user
         this.gameOver();
     }
 
     //handle the response string
-    if(response) {
+    if (response) {
         //pasre to JSON
         var obj = JSON.parse(response);
         this.nextURL = obj.nextURL;
 
         //statement to call the rightful function on the response
-        if(obj.question) {
+        if (obj.question) {
             this.responseQuestion(obj);
         }
         else {
-            if(this.nextURL || obj.message === "Correct answer!") {
+            if (this.nextURL || obj.message === "Correct answer!") {
                 this.responseAnswer(obj);
             }
         }
@@ -101,7 +101,7 @@ Quiz.prototype.responseAnswer = function(obj) {
 
     content.appendChild(template);
 
-    if(this.nextURL) {
+    if (this.nextURL) {
         //Request a new question, but with a delay
         var newQuestion = this.getQuestion.bind(this);
         setTimeout(newQuestion, 1000);
@@ -118,7 +118,7 @@ Quiz.prototype.addListener = function() {
     this.button = document.querySelector("#submit");
     this.form = document.querySelector("#qForm");
 
-    this.button.addEventListener("click",this.submit.bind(this), true);
+    this.button.addEventListener("click", this.submit.bind(this), true);
     this.form.addEventListener("keypress", this.submit.bind(this), true);
 };
 
@@ -173,7 +173,7 @@ Quiz.prototype.gameOver = function() {
     var template = document.querySelector("#template-gameOver").content.cloneNode(true);
 
     //if the highscore has entries add them to the template
-    if(hs.highscore.length > 0 ){
+    if (hs.highscore.length > 0) {
         template.querySelector("h2").appendChild(document.createTextNode("Highscore"));
         var hsFrag = hs.createHighscoreFragment();
         template.querySelector("table").appendChild(hsFrag);
@@ -194,13 +194,13 @@ Quiz.prototype.gameCompleted = function() {
     var template = document.querySelector("#template-quizCompleted").content.cloneNode(true);
 
     //get the highscore if the highscore has entries
-    if(hs.highscore.length > 0) {
+    if (hs.highscore.length > 0) {
         template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));
         var hsFrag = hs.createHighscoreFragment(isNew);
         template.querySelector("table").appendChild(hsFrag);
     }
 
-    if(isNew) {
+    if (isNew) {
         var newHS = document.createElement("h1");
         newHS.appendChild(document.createTextNode("New Highscore!"));
         var div = template.querySelector("div");
@@ -220,7 +220,7 @@ Quiz.prototype.gameCompleted = function() {
  * @param div{Object}, the divelement to clear
  */
 Quiz.prototype.clearDiv = function(div) {
-    while(div.hasChildNodes()) {
+    while (div.hasChildNodes()) {
         div.removeChild(div.lastChild);
     }
 };

@@ -9,22 +9,23 @@ function addThemeSelector() {
         var baseStyle = document.querySelector("#baseStyle");
         var loadingStyle = document.querySelector("#loadingStyle");
         localStorage.setItem("theme", select.value);
-        if(select.value === "playful") {
+        if (select.value === "playful") {
             baseStyle.setAttribute("href", "stylesheet/playful.css");
             loadingStyle.setAttribute("href", "stylesheet/playful_loading.css");
         }
-        else if(select.value === "hacker") {
+        else if (select.value === "hacker") {
             baseStyle.setAttribute("href", "stylesheet/hacker.css");
             loadingStyle.setAttribute("href", "stylesheet/hacker_loading.css");
         }
-        else if(select.value === "terminal") {
+        else if (select.value === "terminal") {
             baseStyle.setAttribute("href", "stylesheet/terminal.css");
             loadingStyle.setAttribute("href", "stylesheet/terminal_loading.css");
         }
-        else if(select.value === "nostyle") {
+        else if (select.value === "nostyle") {
             baseStyle.setAttribute("href", "stylesheet/nostyle.css");
             loadingStyle.setAttribute("href", "stylesheet/nostyle_loading.css");
         }
+
         //set nickname-input focus
         document.querySelector("input").focus();
     });
@@ -42,22 +43,22 @@ function submit(event) {
         var input = document.querySelector("#nickname").value;
 
         //if nickname written, start quiz
-        if(input.length > 1) {
+        if (input.length > 1) {
             q = new Quiz(input);
         }
     }
 }
 
-if(localStorage.getItem("theme")) {
+if (localStorage.getItem("theme")) {
     var theme = localStorage.getItem("theme");
-    document.querySelector("#baseStyle").setAttribute("href", "stylesheet/"+theme+".css");
-    document.querySelector("#loadingStyle").setAttribute("href", "stylesheet/"+theme+"_loading.css");
+    document.querySelector("#baseStyle").setAttribute("href", "stylesheet/" + theme + ".css");
+    document.querySelector("#loadingStyle").setAttribute("href", "stylesheet/" + theme + "_loading.css");
 }
 
 var button = document.querySelector("#submit");
 var form = document.querySelector("#qForm");
 
-button.addEventListener("click",submit, true);
+button.addEventListener("click", submit, true);
 form.addEventListener("keypress", submit, true);
 
 //set nickname-input focus at start
