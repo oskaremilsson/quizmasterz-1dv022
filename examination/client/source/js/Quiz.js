@@ -6,6 +6,7 @@ var Question = require("./Question");
 var Ajax = require("./Ajax");
 var Timer = require("./Timer");
 var Highscore = require("./Highscore");
+var GlobalHighscore = require("./GlobalHighscore");
 
 /**
  * Constructor function for the Quiz
@@ -174,10 +175,13 @@ Quiz.prototype.gameOver = function() {
 
     //if the highscore has entries add them to the template
     if (hs.highscore.length > 0) {
-        template.querySelector("h2").appendChild(document.createTextNode("Highscore"));
+        template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));
         var hsFrag = hs.createHighscoreFragment();
         template.querySelector("table").appendChild(hsFrag);
     }
+
+    var globalHs = new GlobalHighscore(this.nickname);
+    globalHs.sendToServer();
 
     //add the template to content
     document.querySelector("#content").appendChild(template);
@@ -213,6 +217,10 @@ Quiz.prototype.gameCompleted = function() {
     var text = document.createTextNode(this.totalTime.toFixed(3));
     h1.appendChild(text);
     document.querySelector("#content").appendChild(template);
+
+    //add the global highscore
+    var globalHs = new GlobalHighscore(this.nickname, this.totalTime.toFixed(3));
+    globalHs.sendToServer();
 };
 
 /**

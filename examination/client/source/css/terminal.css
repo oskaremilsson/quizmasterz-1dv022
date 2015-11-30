@@ -108,7 +108,7 @@ td:first-child::before {
     float: left;
 }
 
-.hs-title {
+.hs-title, .ghs-title {
     text-align: left;
 }
 

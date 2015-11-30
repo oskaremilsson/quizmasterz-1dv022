@@ -111,7 +111,7 @@ td:first-child::before {
     float: left;
 }
 
-.hs-title, .show-score {
+.hs-title, .show-score, .ghs-title{
     text-align: center;
 }
 

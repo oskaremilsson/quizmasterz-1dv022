@@ -45,7 +45,7 @@
         </div>
     </template>
 
-    <template id="template-newHighscore">
+    <!--<template id="template-newHighscore">
         <div>
             <h1>New Highscore!</h1>
             <h2>You finished the game in <span class="time"></span> seconds</h2>
@@ -54,13 +54,16 @@
             </table>
             <p class="newGame"><a href="?">New Game</a></p>
         </div>
-    </template>
+    </template>-->
 
     <template id="template-quizCompleted">
         <div>
             <h2 class="show-score">You finished the game in <span class="time"></span> seconds</h2>
             <h2 class="hs-title"></h2>
             <table>
+            </table>
+            <h2 class="ghs-title"></h2>
+            <table id="globalHs">
             </table>
             <p class="newGame"><a href="?">New Game</a></p>
         </div>
@@ -71,6 +74,9 @@
             <h1>Wrong answer!</h1>
             <h2 class="hs-title"></h2>
             <table>
+            </table>
+            <h2 class="ghs-title"></h2>
+            <table id="globalHs">
             </table>
             <p class="newGame"><a href="?">New Game</a></p>
         </div>

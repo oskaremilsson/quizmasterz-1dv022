@@ -25,6 +25,7 @@ Question.prototype.print = function() {
     else {
         this.printQuestion();
     }
+
     document.querySelector("input").focus();
 };
 
@@ -62,8 +63,8 @@ Question.prototype.getAltFrag = function() {
     var label;
     var first = true;
 
-    for(var alt in this.alt) {
-        if(this.alt.hasOwnProperty(alt)) {
+    for (var alt in this.alt) {
+        if (this.alt.hasOwnProperty(alt)) {
             //get the template for alternatives
             input = document.querySelector("#template-alternative").content.cloneNode(true);
             //append the alternative
@@ -71,6 +72,7 @@ Question.prototype.getAltFrag = function() {
                 input.querySelector("input").setAttribute("checked", "checked");
                 first = false;
             }
+
             input.querySelector("input").setAttribute("value", alt);
             label = input.querySelector("label");
             label.appendChild(document.createTextNode(this.alt[alt]));
