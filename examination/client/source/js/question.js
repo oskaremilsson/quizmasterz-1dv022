@@ -19,7 +19,7 @@ function Question(obj) {
  */
 Question.prototype.print = function() {
     //statement to call the rightful printfunction
-    if(this.alt) {
+    if (this.alt) {
         this.printAltQuestion();
     }
     else {
@@ -34,7 +34,7 @@ Question.prototype.print = function() {
  * @param div{object}, the div to clear
  */
 Question.prototype.clearDiv = function(div) {
-    while(div.hasChildNodes()) {
+    while (div.hasChildNodes()) {
         div.removeChild(div.lastChild);
     }
 };
@@ -67,6 +67,7 @@ Question.prototype.getAltFrag = function() {
         if (this.alt.hasOwnProperty(alt)) {
             //get the template for alternatives
             input = document.querySelector("#template-alternative").content.cloneNode(true);
+
             //append the alternative
             if (first) {
                 input.querySelector("input").setAttribute("checked", "checked");
@@ -81,6 +82,7 @@ Question.prototype.getAltFrag = function() {
         }
 
     }
+
     return inputFrag;
 };
 

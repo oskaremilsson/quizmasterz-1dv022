@@ -1,5 +1,7 @@
 /**
  * Created by Oskar on 2015-11-24.
+ * This uses some back-end hpp-code and mysql hosted on my server.
+ * The code for that can be seen but wont be pushed to github.
  */
 var Ajax = require("./Ajax");
 
