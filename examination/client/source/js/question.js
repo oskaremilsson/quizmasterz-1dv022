@@ -59,12 +59,17 @@ Question.prototype.getAltFrag = function() {
     var inputFrag = document.createDocumentFragment();
     var input;
     var label;
+    var first = true;
 
     for(var alt in this.alt) {
         if(this.alt.hasOwnProperty(alt)) {
             //get the template for alternatives
             input = document.querySelector("#template-alternative").content.cloneNode(true);
             //append the alternative
+            if (first) {
+                input.querySelector("input").setAttribute("checked", "checked");
+                first = false;
+            }
             input.querySelector("input").setAttribute("value", alt);
             label = input.querySelector("label");
             label.appendChild(document.createTextNode(this.alt[alt]));
