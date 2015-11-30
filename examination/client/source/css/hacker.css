@@ -59,6 +59,7 @@ input[type="text"]:focus, input[type="button"]:focus, input[type="radio"]:focus 
 
 input[type="button"] {
     margin: 10px;
+    margin-left: 0;
     height: 50px;
     width: 120px;
     background: #37d61d;

@@ -21,6 +21,10 @@ function addThemeSelector() {
             baseStyle.setAttribute("href", "stylesheet/terminal.css");
             loadingStyle.setAttribute("href", "stylesheet/terminal_loading.css");
         }
+        else if(select.value === "nostyle") {
+            baseStyle.setAttribute("href", "stylesheet/nostyle.css");
+            loadingStyle.setAttribute("href", "stylesheet/nostyle_loading.css");
+        }
         //set nickname-input focus
         document.querySelector("input").focus();
     });

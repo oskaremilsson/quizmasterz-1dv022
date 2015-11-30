@@ -4,8 +4,9 @@
 }
 
 body {
-    font-family: 'Indie Flower', cursive;
-    background: #edd8a5;
+    font-family: Arial, sans-serif;
+    background: #000000;
+    color: #37d61d;
 }
 
 #wrapper {
@@ -13,26 +14,23 @@ body {
 }
 
 #content{
-    margin: 0 auto;
     max-width: 500px;
     clear: both;
-    margin-top: 20px;
     border: 2px solid #000;
-    border-radius: 15px;
     padding: 20px;
-    background: #f7f2e5;
 }
 
 .description {
-    text-align: center;
+    text-align: left;
 }
 
 .welcomeHead {
-    font-size: 4em;
+    font-size: 12pt;
 }
 
 #qForm {
-    padding: 20px;
+    margin-top: 14px;
+    margin-bottom: 14px;
     max-width: 500px;
 }
 
@@ -41,31 +39,27 @@ body {
     font-size: 18px;
 }
 
-input[type="text"] {
-    font-size: 35px;
-    line-height: 35px;
-    padding: 10px;
-    height: 50px;
-    border-radius: 25px;
-    max-width: 100%;
-    border: 2px solid #efa131;
-    text-align: center;
-    font-family: 'Indie Flower', cursive;
+#qForm label:before, h1:before, h2:before {
+    content: "$ ";
 }
 
-input[type="text"]:focus, input[type="button"] {
+input[type="text"] {
+    font-size: 12pt;
+    padding: 2px;
+    height: 14px;
+    max-width: 100%;
+    text-align: left;
+    background: #000000;
+    color: #62ef31;
+    border: none;
+}
+
+input[type="text"]:focus, input[type="button"]:focus, input[type="radio"]:focus {
     outline: none;
 }
 
 input[type="button"] {
-    border-radius: 15px;
-    margin: 10px;
-    height: 50px;
-    width: 120px;
-    background: #37d61d;
-    border: 2px solid #62ef31;
-    font-size: 35px;
-    font-family: 'Indie Flower', cursive;
+    display: none;
 }
 
 input[type="button"]:active {
@@ -75,8 +69,9 @@ input[type="button"]:active {
 }
 
 input[type="radio"] {
-    height: 40px;
-    width: 40px;
+    width: 0;
+    height: 0;
+    opacity: 99;
 }
 
 .radio-label {
@@ -84,14 +79,19 @@ input[type="radio"] {
     height: 50px;
     vertical-align:top;
     margin-top: 10px;
-    font-size: 25px !important;
+    font-size: 12pt !important;
+}
+
+input[type="radio"]:checked+label{
+    color: #fff;
+    font-weight: bold;
 }
 
 table {
     width: 100%;
-    font-size: 24px;
+    font-size: 15px;
     margin: 10px;
-    text-align: center;
+    text-align: left;
 
     counter-reset: rowNumber;
 }
@@ -101,8 +101,6 @@ table tr {
 }
 
 td {
-    border-radius: 4px;
-    background: #e4e3dd;
 }
 
 td:first-child::before {
@@ -111,7 +109,7 @@ td:first-child::before {
 }
 
 .hs-title {
-    text-align: center;
+    text-align: left;
 }
 
 .hs-nickname {
@@ -121,19 +119,17 @@ td:first-child::before {
 }
 
 .hs-score:after {
-    content: "sec";
+    content: "s";
 }
 
 .newGame {
-    border-radius: 15px;
-    margin: 0 auto;
-    height: 50px;
+    height: 15px;
     padding: 10px;
-    padding-top: 20px;
-    width: 200px;
-    background: #ebd11f;
+    padding-top: 5px;
+    width: 100px;
+    background: green;
     border: 2px solid #f7dd2e;
-    font-size: 35px;
+    font-size: 12pt;
     text-align: center;
 }
 
@@ -144,7 +140,7 @@ td:first-child::before {
 }
 
 .highlight td{
-    background: #f3e68e;
+    color: #0ce8f0;
 }
 
 #theme-selector {
@@ -165,4 +161,9 @@ td:first-child::before {
     overflow: hidden;
     background: url(../image/down_arrow_select.jpg) no-repeat right #ddd;
     border: 1px solid #ccc;
+}
+
+h1, h2 {
+    font-size: 12pt;
+    text-align: left;
 }
