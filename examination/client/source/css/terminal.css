@@ -14,25 +14,23 @@ body {
 }
 
 #content{
-    margin: 0 auto;
     max-width: 500px;
     clear: both;
-    margin-top: 20px;
     border: 2px solid #000;
     padding: 20px;
-    background: #535353;
 }
 
 .description {
-    text-align: center;
+    text-align: left;
 }
 
 .welcomeHead {
-    font-size: 4em;
+    font-size: 12pt;
 }
 
 #qForm {
-    padding: 20px;
+    margin-top: 14px;
+    margin-bottom: 14px;
     max-width: 500px;
 }
 
@@ -41,16 +39,19 @@ body {
     font-size: 18px;
 }
 
+#qForm label:before, h1:before, h2:before {
+    content: "$ ";
+}
+
 input[type="text"] {
-    font-size: 35px;
-    line-height: 35px;
-    padding: 10px;
-    height: 50px;
+    font-size: 12pt;
+    padding: 2px;
+    height: 14px;
     max-width: 100%;
-    border: 2px solid #62ef31;
-    text-align: center;
-    background: #535353;
+    text-align: left;
+    background: #000000;
     color: #62ef31;
+    border: none;
 }
 
 input[type="text"]:focus, input[type="button"]:focus, input[type="radio"]:focus {
@@ -58,12 +59,7 @@ input[type="text"]:focus, input[type="button"]:focus, input[type="radio"]:focus 
 }
 
 input[type="button"] {
-    margin: 10px;
-    height: 50px;
-    width: 120px;
-    background: #37d61d;
-    border: 2px solid #62ef31;
-    font-size: 35px;
+    display: none;
 }
 
 input[type="button"]:active {
@@ -73,8 +69,9 @@ input[type="button"]:active {
 }
 
 input[type="radio"] {
-    height: 40px;
-    width: 40px;
+    width: 0;
+    height: 0;
+    opacity: 99;
 }
 
 .radio-label {
@@ -82,14 +79,19 @@ input[type="radio"] {
     height: 50px;
     vertical-align:top;
     margin-top: 10px;
-    font-size: 25px !important;
+    font-size: 12pt !important;
+}
+
+input[type="radio"]:checked+label{
+    color: #fff;
+    font-weight: bold;
 }
 
 table {
     width: 100%;
     font-size: 15px;
     margin: 10px;
-    text-align: center;
+    text-align: left;
 
     counter-reset: rowNumber;
 }
@@ -99,8 +101,6 @@ table tr {
 }
 
 td {
-    border-radius: 4px;
-    background: #e4e3dd;
 }
 
 td:first-child::before {
@@ -109,7 +109,7 @@ td:first-child::before {
 }
 
 .hs-title {
-    text-align: center;
+    text-align: left;
 }
 
 .hs-nickname {
@@ -123,14 +123,13 @@ td:first-child::before {
 }
 
 .newGame {
-    margin: 0 auto;
-    height: 50px;
+    height: 15px;
     padding: 10px;
-    padding-top: 20px;
-    width: 200px;
-    background: #62ef31;
+    padding-top: 5px;
+    width: 100px;
+    background: green;
     border: 2px solid #f7dd2e;
-    font-size: 35px;
+    font-size: 12pt;
     text-align: center;
 }
 
@@ -164,6 +163,7 @@ td:first-child::before {
     border: 1px solid #ccc;
 }
 
-h1 {
-    text-align: center;
+h1, h2 {
+    font-size: 12pt;
+    text-align: left;
 }

@@ -25,6 +25,7 @@ Question.prototype.print = function() {
     else {
         this.printQuestion();
     }
+    document.querySelector("input").focus();
 };
 
 /**

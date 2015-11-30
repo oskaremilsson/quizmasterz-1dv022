@@ -12,7 +12,7 @@
             <h1 class="qHead"></h1>
             <form id="qForm">
                 <label>Answer
-                <input type="text" id="answer" /></label> <!--autocomplete="off" -->
+                <input type="text" id="answer" autocomplete="off" /></label>
                 <input type="button" id="submit" value="Send" />
             </form>
         </div>
@@ -30,7 +30,7 @@
 
     <template id="template-alternative">
         <div class="alternativeRow">
-        <label class="radio-label"><input type="radio" name="alternative"/></label>
+        <input type="radio" name="alternative"/><label class="radio-label"></label>
         </div>
     </template>
 
@@ -102,6 +102,7 @@
                     <option disabled selected> -- Choose a theme -- </option>
                     <option value="playful">Playful</option>
                     <option value="hacker">Hacker</option>
+                    <option value="terminal">Terminal</option>
                 </select>
             </div>
         </div>

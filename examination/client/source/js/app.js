@@ -17,6 +17,12 @@ function addThemeSelector() {
             baseStyle.setAttribute("href", "stylesheet/hacker.css");
             //loadingStyle.setAttribute("href", "stylesheet/hacker_loading.css");
         }
+        else if(select.value === "terminal") {
+            baseStyle.setAttribute("href", "stylesheet/terminal.css");
+            //loadingStyle.setAttribute("href", "stylesheet/hacker_loading.css");
+        }
+        //set nickname-input focus
+        document.querySelector("input").focus();
     });
 }
 
@@ -38,16 +44,19 @@ function submit(event) {
     }
 }
 
+if(localStorage.getItem("theme")) {
+    var theme = localStorage.getItem("theme");
+    document.querySelector("#baseStyle").setAttribute("href", "stylesheet/"+theme+".css");
+    document.querySelector("#loadingStyle").setAttribute("href", "stylesheet/"+theme+"_loading.css");
+}
+
 var button = document.querySelector("#submit");
 var form = document.querySelector("#qForm");
 
 button.addEventListener("click",submit, true);
 form.addEventListener("keypress", submit, true);
 
-addThemeSelector();
+//set nickname-input focus at start
+document.querySelector("input").focus();
 
-if(localStorage.getItem("theme")) {
-    var theme = localStorage.getItem("theme");
-    document.querySelector("#baseStyle").setAttribute("href", "stylesheet/"+theme+".css");
-    document.querySelector("#loadingStyle").setAttribute("href", "stylesheet/"+theme+"_loading.css");
-}
+addThemeSelector();

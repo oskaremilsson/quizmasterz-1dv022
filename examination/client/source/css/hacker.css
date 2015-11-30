@@ -53,7 +53,7 @@ input[type="text"] {
     color: #62ef31;
 }
 
-input[type="text"]:focus, input[type="button"] {
+input[type="text"]:focus, input[type="button"]:focus, input[type="radio"]:focus {
     outline: none;
 }
 
