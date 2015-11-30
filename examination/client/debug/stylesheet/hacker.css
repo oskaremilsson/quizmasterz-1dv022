@@ -47,8 +47,10 @@ input[type="text"] {
     padding: 10px;
     height: 50px;
     max-width: 100%;
-    border: 2px solid #efa131;
+    border: 2px solid #62ef31;
     text-align: center;
+    background: #535353;
+    color: #62ef31;
 }
 
 input[type="text"]:focus, input[type="button"] {
@@ -85,7 +87,7 @@ input[type="radio"] {
 
 table {
     width: 100%;
-    font-size: 24px;
+    font-size: 15px;
     margin: 10px;
     text-align: center;
 
@@ -117,7 +119,7 @@ td:first-child::before {
 }
 
 .hs-score:after {
-    content: "sec";
+    content: "s";
 }
 
 .newGame {
@@ -126,7 +128,7 @@ td:first-child::before {
     padding: 10px;
     padding-top: 20px;
     width: 200px;
-    background: #ebd11f;
+    background: #62ef31;
     border: 2px solid #f7dd2e;
     font-size: 35px;
     text-align: center;
@@ -160,4 +162,8 @@ td:first-child::before {
     overflow: hidden;
     background: url(../image/down_arrow_select.jpg) no-repeat right #ddd;
     border: 1px solid #ccc;
+}
+
+h1 {
+    text-align: center;
 }

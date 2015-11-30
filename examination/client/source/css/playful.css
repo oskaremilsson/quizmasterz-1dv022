@@ -166,3 +166,7 @@ td:first-child::before {
     background: url(../image/down_arrow_select.jpg) no-repeat right #ddd;
     border: 1px solid #ccc;
 }
+
+h1 {
+    text-align: center;
+}
