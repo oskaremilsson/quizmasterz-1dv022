@@ -165,10 +165,6 @@ Quiz.prototype.submit = function(event) {
  * Function to handle the gameOver-view and present it to user
  */
 Quiz.prototype.gameOver = function() {
-    //play sound
-    var audio = new Audio("//dl.dropboxusercontent.com/content_link/9EUVA71zInmxbChdjoTy3YKI4qOcnb6MEPubebEntM1GtRUeHBGAunLNL7brc5iG/file");
-    audio.play();
-
     //create a highscore module to show it to the user
     var hs = new Highscore(this.nickname);
     this.clearDiv(document.querySelector("#content"));
