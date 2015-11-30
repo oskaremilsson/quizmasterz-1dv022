@@ -15,11 +15,11 @@ function addThemeSelector() {
         }
         else if(select.value === "hacker") {
             baseStyle.setAttribute("href", "stylesheet/hacker.css");
-            //loadingStyle.setAttribute("href", "stylesheet/hacker_loading.css");
+            loadingStyle.setAttribute("href", "stylesheet/hacker_loading.css");
         }
         else if(select.value === "terminal") {
             baseStyle.setAttribute("href", "stylesheet/terminal.css");
-            //loadingStyle.setAttribute("href", "stylesheet/hacker_loading.css");
+            loadingStyle.setAttribute("href", "stylesheet/terminal_loading.css");
         }
         //set nickname-input focus
         document.querySelector("input").focus();

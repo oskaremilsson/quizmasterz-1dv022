@@ -100,7 +100,7 @@ table tr {
 
 td {
     border-radius: 4px;
-    background: #e4e3dd;
+    background: #393939;
 }
 
 td:first-child::before {
@@ -141,7 +141,8 @@ td:first-child::before {
 }
 
 .highlight td{
-    background: #f3e68e;
+    background: #393939;
+    color: #0ce8f0;
 }
 
 #theme-selector {

@@ -140,7 +140,7 @@ td:first-child::before {
 }
 
 .highlight td{
-    background: #f3e68e;
+    color: #0ce8f0;
 }
 
 #theme-selector {

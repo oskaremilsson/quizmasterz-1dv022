@@ -47,7 +47,9 @@ Highscore.prototype.isHighscore = function() {
     } else {
         //get the score last in the list
         var lastScore = this.highscore[this.highscore.length - 1].score;
-        if(this.score < lastScore || this.highscore.length < 5) {
+
+        //check if highscore
+        if(parseFloat(this.score) < parseFloat(lastScore) || this.highscore.length < 5) {
             isHighscore = true;
         }
     }
