@@ -113,6 +113,26 @@ td:first-child::before {
     text-align: center;
 }
 
+.ghs-title::before {
+    width: 28px;
+    height: 28px;
+    background: url(../image/hacker_globe.png);
+    background-size: 28px 27px;
+    background-repeat: no-repeat;
+    content: "----";
+    color: rgba(0,0,0,0);
+}
+
+.hs-title::before {
+    width: 28px;
+    height: 28px;
+    background: url(../image/hacker_hs.png);
+    background-size: 28px 28px;
+    background-repeat: no-repeat;
+    content: "----";
+    color: rgba(0,0,0,0);
+}
+
 .hs-nickname {
     padding-top: 5px;
     font-weight: bold;

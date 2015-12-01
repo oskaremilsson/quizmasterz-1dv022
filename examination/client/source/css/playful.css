@@ -115,6 +115,26 @@ td:first-child::before {
     text-align: center;
 }
 
+.ghs-title::before {
+    width: 35px;
+    height: 35px;
+    background: url(../image/playful_globe.png);
+    background-size: 35px 35px;
+    background-repeat: no-repeat;
+    content: "----";
+    color: rgba(0,0,0,0);
+}
+
+.hs-title::before {
+    width: 35px;
+    height: 35px;
+    background: url(../image/playful_hs.png);
+    background-size: 35px 35px;
+    background-repeat: no-repeat;
+    content: "----";
+    color: rgba(0,0,0,0);
+}
+
 .hs-nickname {
     padding-top: 5px;
     font-weight: bold;

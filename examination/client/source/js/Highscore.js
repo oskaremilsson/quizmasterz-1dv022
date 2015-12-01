@@ -11,6 +11,7 @@
 function Highscore(nickname, score) {
     this.nickname = nickname;
     this.score = score;
+    this.date = new Date();
     this.highscore = [];
 
     //call to read highscore file from local storage
@@ -67,11 +68,10 @@ Highscore.prototype.addToList = function() {
     //call the isHighscore to check if score should be added
     if (this.isHighscore()) {
         //save the nickname, score and datestamp into an object
-        var date = new Date();
         var thisScore = {
             nickname: this.nickname,
             score: this.score,
-            date: date
+            date: this.date
         };
 
         //delete the last position of the highscore array
