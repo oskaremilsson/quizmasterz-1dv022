@@ -200,7 +200,7 @@ Quiz.prototype.gameCompleted = function() {
     //get the highscore if the highscore has entries
     if (hs.highscore.length > 0) {
         template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));
-        var hsFrag = hs.createHighscoreFragment(isNew);
+        var hsFrag = hs.createHighscoreFragment();
         template.querySelector("table").appendChild(hsFrag);
     }
 

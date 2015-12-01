@@ -104,15 +104,13 @@ Highscore.prototype.saveToFile = function() {
  * Function to get the highscorefragment containing the highscore-part of table
  * @returns {DocumentFragment}
  */
-Highscore.prototype.createHighscoreFragment = function(isNew) {
+Highscore.prototype.createHighscoreFragment = function() {
     var frag = document.createDocumentFragment();
     var template;
     var hsNickname;
     var hsScore;
     var hsDate;
-    var date;
-    var latestEntry = new Date(this.highscore[0].date);
-    var highlightIndex = 0;
+    var tempDate;
 
     //options for the date-format in the  table
     var dateOptions = {
@@ -131,24 +129,16 @@ Highscore.prototype.createHighscoreFragment = function(isNew) {
         hsNickname.appendChild(document.createTextNode(this.highscore[i].nickname));
         hsScore.appendChild(document.createTextNode(this.highscore[i].score));
 
-        date = new Date(this.highscore[i].date);
-        hsDate.appendChild(document.createTextNode(date.toLocaleTimeString("sv-se", dateOptions)));
+        tempDate = new Date(this.highscore[i].date);
+        hsDate.appendChild(document.createTextNode(tempDate.toLocaleTimeString("sv-se", dateOptions)));
 
-        if (isNew) {
-            //check for the letest entry
-            if (date.valueOf() > latestEntry.valueOf()) {
-                highlightIndex = i;
-                latestEntry = date;
-            }
+        if (this.date.valueOf() === tempDate.valueOf()) {
+            //highlight the new highscore in the list
+            template.querySelector("tr").classList.add("highlight");
         }
 
         //append row to fragment
         frag.appendChild(template);
-    }
-
-    if (isNew) {
-        //highlight the new highscore in the list
-        frag.querySelectorAll("tr")[highlightIndex].classList.add("highlight");
     }
 
     return frag;
