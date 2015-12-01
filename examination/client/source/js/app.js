@@ -3,6 +3,9 @@ var Quiz = require("./Quiz");
 var q;
 
 function addThemeSelector() {
+    //element to change the start-info
+    var descr = document.querySelector("#start-info");
+
     //add listener for the theme chooser
     var select = document.querySelector("#theme-selector");
     select.addEventListener("change", function() {
@@ -12,18 +15,32 @@ function addThemeSelector() {
         if (select.value === "playful") {
             baseStyle.setAttribute("href", "stylesheet/playful.css");
             loadingStyle.setAttribute("href", "stylesheet/playful_loading.css");
+
+            if (descr.hasChildNodes()) {
+                descr.removeChild(descr.firstChild);
+            }
         }
         else if (select.value === "hacker") {
             baseStyle.setAttribute("href", "stylesheet/hacker.css");
             loadingStyle.setAttribute("href", "stylesheet/hacker_loading.css");
+
+            if (descr.hasChildNodes()) {
+                descr.removeChild(descr.firstChild);
+            }
         }
         else if (select.value === "terminal") {
             baseStyle.setAttribute("href", "stylesheet/terminal.css");
             loadingStyle.setAttribute("href", "stylesheet/terminal_loading.css");
+
+            descr.appendChild(document.createTextNode("Use keypad to choose when alternatives. OBS! Don't use mouseclick in this mode!"));
         }
         else if (select.value === "nostyle") {
             baseStyle.setAttribute("href", "stylesheet/nostyle.css");
             loadingStyle.setAttribute("href", "stylesheet/nostyle_loading.css");
+
+            if (descr.hasChildNodes()) {
+                descr.removeChild(descr.firstChild);
+            }
         }
 
         //set nickname-input focus
