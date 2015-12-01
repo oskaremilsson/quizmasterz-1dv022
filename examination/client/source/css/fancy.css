@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+@import url(https://fonts.googleapis.com/css?family=Cinzel);
 
 * {
     padding: 0;
@@ -6,23 +6,38 @@
 }
 
 body {
-    font-family: 'Indie Flower', cursive;
-    background: #edd8a5;
+    font-family: 'Cinzel', serif;
+    background: url(../image/fancy_bg.jpg) no-repeat center center fixed;
+    background-size: cover;
 }
 
 #wrapper {
-    width: 100%;
+    margin: auto;
+    max-width: 800px;
+    max-height: 400px;
+    padding: 20px;
+    background: rgba(255,255,255,0.65);
+    border: 2px solid #000;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #content{
-    margin: 0 auto;
-    max-width: 500px;
+    width: 100%;
     clear: both;
     margin-top: 20px;
-    border: 2px solid #000;
-    border-radius: 15px;
-    padding: 20px;
-    background: #f7f2e5;
+}
+
+#answer-response {
+    text-align: center;
+    font-size: 24pt;
 }
 
 .description {
@@ -35,7 +50,8 @@ body {
 
 #qForm {
     padding: 20px;
-    max-width: 500px;
+    max-width: 1000px;
+    text-align: center;
 }
 
 #qForm label {
@@ -48,11 +64,11 @@ input[type="text"] {
     line-height: 35px;
     padding: 10px;
     height: 50px;
-    border-radius: 25px;
     max-width: 100%;
     border: 2px solid #efa131;
     text-align: center;
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Cinzel', serif;
+    background: rgba(255,255,255,0.6);
 }
 
 input[type="text"]:focus, input[type="button"]:focus, input[type="radio"]:focus {
@@ -60,15 +76,18 @@ input[type="text"]:focus, input[type="button"]:focus, input[type="radio"]:focus 
 }
 
 input[type="button"] {
-    border-radius: 15px;
     margin: 10px;
     margin-left: 0;
     height: 50px;
     width: 120px;
-    background: #37d61d;
+    background: rgba(55,214,29,0.6);
     border: 2px solid #62ef31;
     font-size: 35px;
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Cinzel', serif;
+}
+
+input[type="button"]:hover {
+    cursor: pointer;
 }
 
 input[type="button"]:active {
@@ -104,8 +123,7 @@ table tr {
 }
 
 td {
-    border-radius: 4px;
-    background: #e4e3dd;
+    background: rgba(255,255,255,0.3);
 }
 
 td:first-child::before {
@@ -148,14 +166,13 @@ td:first-child::before {
 }
 
 .newGame {
-    border-radius: 15px;
     margin: 0 auto;
     height: 50px;
     padding: 10px;
     padding-top: 20px;
     width: 200px;
-    background: #ebd11f;
-    border: 2px solid #f7dd2e;
+    background: rgba(55,214,29,0.6);
+    border: 2px solid #62ef31;
     font-size: 35px;
     text-align: center;
 }
@@ -167,7 +184,7 @@ td:first-child::before {
 }
 
 .highlight td{
-    background: #f3e68e;
+    background: rgba(120,255,21,0.35);
 }
 
 #theme-selector {
@@ -177,12 +194,12 @@ td:first-child::before {
     font-size: 16px;
     line-height: 1;
     border: 0;
-    border-radius: 0;
     height: 34px;
     -webkit-appearance: none;
 }
 
 .styled-select {
+    margin: 0 auto;
     width: 240px;
     height: 34px;
     overflow: hidden;

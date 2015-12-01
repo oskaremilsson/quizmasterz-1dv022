@@ -12,6 +12,7 @@ function addThemeSelector() {
         var baseStyle = document.querySelector("#baseStyle");
         var loadingStyle = document.querySelector("#loadingStyle");
         localStorage.setItem("theme", select.value);
+
         if (select.value === "playful") {
             baseStyle.setAttribute("href", "stylesheet/playful.css");
             loadingStyle.setAttribute("href", "stylesheet/playful_loading.css");
@@ -23,6 +24,14 @@ function addThemeSelector() {
         else if (select.value === "hacker") {
             baseStyle.setAttribute("href", "stylesheet/hacker.css");
             loadingStyle.setAttribute("href", "stylesheet/hacker_loading.css");
+
+            if (descr.hasChildNodes()) {
+                descr.removeChild(descr.firstChild);
+            }
+        }
+        else if (select.value === "fancy") {
+            baseStyle.setAttribute("href", "stylesheet/fancy.css");
+            loadingStyle.setAttribute("href", "stylesheet/fancy_loading.css");
 
             if (descr.hasChildNodes()) {
                 descr.removeChild(descr.firstChild);

@@ -2,9 +2,8 @@
 <html>
 <head>
     <title>Examination 2</title>
-    <link id="baseStyle" rel="stylesheet" type="text/css" href="stylesheet/playful.css">
-    <link id="loadingStyle" rel="stylesheet" type="text/css" href="stylesheet/playful_loading.css">
-    <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <link id="baseStyle" rel="stylesheet" type="text/css" href="stylesheet/fancy.css">
+    <link id="loadingStyle" rel="stylesheet" type="text/css" href="stylesheet/fancy_loading.css">
 
     <template id="template-question">
         <div id="timer"><h1 class="timerH1">-</h1></div>
@@ -44,17 +43,6 @@
             </div>
         </div>
     </template>
-
-    <!--<template id="template-newHighscore">
-        <div>
-            <h1>New Highscore!</h1>
-            <h2>You finished the game in <span class="time"></span> seconds</h2>
-            <h2 class="hs-title"></h2>
-            <table>
-            </table>
-            <p class="newGame"><a href="?">New Game</a></p>
-        </div>
-    </template>-->
 
     <template id="template-quizCompleted">
         <div>
@@ -106,6 +94,7 @@
             <div class="styled-select">
                 <select id="theme-selector">
                     <option disabled selected> -- Choose a theme -- </option>
+                    <option value="fancy">Fancy</option>
                     <option value="playful">Playful</option>
                     <option value="hacker">Hacker</option>
                     <option value="terminal">Terminal</option>
