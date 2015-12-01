@@ -91,6 +91,12 @@ GlobalHighscore.prototype.createHighscoreFragment = function() {
     var hsDate;
     var date;
 
+    //options for the date-format in the  table
+    var dateOptions = {
+        year: "numeric", month: "numeric",
+        day: "numeric", hour: "2-digit", minute: "2-digit"
+    };
+
     for (var i = 0; i < this.highscore.length; i += 1) {
         //get the template for a table-row
         template = document.querySelector("#template-highscoreRow").content.cloneNode(true);
@@ -103,7 +109,7 @@ GlobalHighscore.prototype.createHighscoreFragment = function() {
         hsScore.appendChild(document.createTextNode(this.highscore[i].score));
 
         date = new Date(this.highscore[i].date);
-        hsDate.appendChild(document.createTextNode(date.toDateString()));
+        hsDate.appendChild(document.createTextNode(date.toLocaleTimeString("sv-se", dateOptions)));
 
         //append row to fragment
         frag.appendChild(template);
