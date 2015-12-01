@@ -14,6 +14,7 @@ var Ajax = require("./Ajax");
 function GlobalHighscore(nickname, score) {
     this.nickname = nickname;
     this.score = score;
+    this.date = new Date();
     this.highscore = [];
 }
 
@@ -21,8 +22,7 @@ function GlobalHighscore(nickname, score) {
  * Send the request to add the score to the server
  */
 GlobalHighscore.prototype.sendToServer = function() {
-    var date = new Date();
-    var data = {nickname: this.nickname, score: this.score, date: date};
+    var data = {nickname: this.nickname, score: this.score, date: this.date};
     var config = {
         method: "POST",
         url: "//root.oskaremilsson.se/quizmasterz/add.php",
@@ -89,7 +89,8 @@ GlobalHighscore.prototype.createHighscoreFragment = function() {
     var hsNickname;
     var hsScore;
     var hsDate;
-    var date;
+    var tempDate;
+    var tempHs;
 
     //options for the date-format in the  table
     var dateOptions = {
@@ -98,6 +99,8 @@ GlobalHighscore.prototype.createHighscoreFragment = function() {
     };
 
     for (var i = 0; i < this.highscore.length; i += 1) {
+        tempHs = this.highscore[i];
+
         //get the template for a table-row
         template = document.querySelector("#template-highscoreRow").content.cloneNode(true);
         hsNickname = template.querySelector(".hs-nickname");
@@ -105,11 +108,17 @@ GlobalHighscore.prototype.createHighscoreFragment = function() {
         hsDate = template.querySelector(".hs-date");
 
         //append the nickname and score to the row
-        hsNickname.appendChild(document.createTextNode(this.highscore[i].nickname));
-        hsScore.appendChild(document.createTextNode(this.highscore[i].score));
+        hsNickname.appendChild(document.createTextNode(tempHs.nickname));
+        hsScore.appendChild(document.createTextNode(tempHs.score));
 
-        date = new Date(this.highscore[i].date);
-        hsDate.appendChild(document.createTextNode(date.toLocaleTimeString("sv-se", dateOptions)));
+        //convert the timestamp back to date-object
+        tempDate = new Date(tempHs.date);
+        hsDate.appendChild(document.createTextNode(tempDate.toLocaleTimeString("sv-se", dateOptions)));
+
+        //if the global highscore is identical with this one add the highlight class
+        if (this.date.valueOf() === tempDate.valueOf() && this.nickname === tempHs.nickname && this.score === tempHs.score) {
+            template.querySelector("tr").classList.add("highlight");
+        }
 
         //append row to fragment
         frag.appendChild(template);
