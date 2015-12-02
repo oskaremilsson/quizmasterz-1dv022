@@ -15,7 +15,7 @@ function Quiz(nickname) {
     this.nickname = nickname;
     this.timer = undefined;
     this.question = undefined;
-    this.nextURL = "http://vhost3.lnu.se:20080/question/1";
+    this.nextURL = "http://oskaremilsson.se:4000/question/1"; //"http://vhost3.lnu.se:20080/question/1"
     this.button = undefined;
     this.form = undefined;
     this.totalTime = 0;

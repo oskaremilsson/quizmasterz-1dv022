@@ -52,6 +52,14 @@ function addThemeSelector() {
                 descr.removeChild(descr.firstChild);
             }
         }
+        else if (select.value === "1me321") {
+            baseStyle.setAttribute("href", "stylesheet/1me321.css");
+            loadingStyle.setAttribute("href", "stylesheet/1me321.css");
+
+            if (descr.hasChildNodes()) {
+                descr.removeChild(descr.firstChild);
+            }
+        }
 
         //set nickname-input focus
         document.querySelector("input").focus();
