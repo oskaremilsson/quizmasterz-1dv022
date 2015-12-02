@@ -139,7 +139,7 @@ td:first-child::before {
     width: 35px;
     height: 35px;
     background: url(../image/playful_globe.png);
-    background-size: 35px 35px;
+    background-size: 35px 34px;
     background-repeat: no-repeat;
     content: "----";
     color: rgba(0,0,0,0);

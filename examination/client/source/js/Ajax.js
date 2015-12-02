@@ -1,6 +1,4 @@
-/**
- * Created by Oskar on 2015-11-23.
- */
+"use strict";
 
 /**
  * Function to handle requests via XMLHttpRequest

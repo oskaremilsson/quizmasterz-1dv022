@@ -1,7 +1,5 @@
-/**
- * Created by Oskar on 2015-11-23.
- */
 "use strict";
+
 var Question = require("./Question");
 var Ajax = require("./Ajax");
 var Timer = require("./Timer");

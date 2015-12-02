@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Created by Oskar on 2015-11-24.
  * This uses some back-end hpp-code and mysql hosted on my server.
