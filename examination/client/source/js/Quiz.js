@@ -28,6 +28,9 @@ function Quiz(nickname) {
  * Function to send a request for a new question
  */
 Quiz.prototype.getQuestion = function() {
+    //document.querySelector("#wrapper").classList.remove("animate-right");
+    //document.querySelector("#wrapper").classList.add("animate-left");
+
     var config = {method: "GET", url: this.nextURL};
     var responseFunction = this.response.bind(this);
 
@@ -163,13 +166,23 @@ Quiz.prototype.submit = function(event) {
 /**
  * Function to handle the gameOver-view and present it to user
  */
-Quiz.prototype.gameOver = function() {
+Quiz.prototype.gameOver = function(cause) {
     //create a highscore module to show it to the user
     var hs = new Highscore(this.nickname);
     this.clearDiv(document.querySelector("#content"));
 
     //get the game over template
     var template = document.querySelector("#template-gameOver").content.cloneNode(true);
+
+    //print title depending on cause
+    var title;
+    if (cause === "time") {
+        title = document.createTextNode("You ran out of time!");
+    } else {
+        title = document.createTextNode("Wrong answer!");
+    }
+
+    template.querySelector("h1").appendChild(title);
 
     //if the highscore has entries add them to the template
     if (hs.highscore.length > 0) {

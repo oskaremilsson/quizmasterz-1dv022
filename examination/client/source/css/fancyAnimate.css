@@ -226,3 +226,34 @@ h1 {
 	opacity: 0;
 }
 
+.animate-left, .animate-right {
+	opacity: 1;
+	animation-duration: 1.1s;
+	animation-iteration-count: 1;
+}
+
+.animate-left {
+	animation-name: slide-left;
+}
+
+.animate-right {
+	animation-name: slide-right;
+}
+
+@keyframes slide-left {
+	0% {
+		left: calc(100% + 300px);
+	}
+	100% {
+		left: 0;
+	}
+}
+
+@keyframes slide-right {
+	0% {
+		left: 0;
+	}
+	100% {
+		left: -200%;
+	}
+}

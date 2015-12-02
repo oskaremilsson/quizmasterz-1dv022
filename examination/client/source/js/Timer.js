@@ -35,17 +35,32 @@ Timer.prototype.run = function() {
     //count the time - difference to show countdown
     var showTime = this.time - diff;
 
+    //calculate percentage and add the color class
+    var percentage = (showTime / this.time) * 100;
+    if (percentage <= 50 && percentage > 25) {
+        this.element.classList.add("timer-50");
+    }
+    else if (percentage <= 25) {
+        this.element.classList.remove("timer-50");
+        this.element.classList.add("timer-25");
+    }
+
     if (diff >= this.time) {
         //time if up
         showTime = 0;
         clearInterval(this.interval);
 
         //call owner gameOver since time is out
-        this.owner.gameOver();
+        this.owner.gameOver("time");
     }
 
-    //show the timer with one decimal
-    this.print(showTime.toFixed(1));
+    //show the timer, use decimals if under 10 sec
+    if (showTime <= 10) {
+        this.print(showTime.toFixed(1));
+    }
+    else {
+        this.print(showTime.toFixed(0));
+    }
 };
 
 /**
