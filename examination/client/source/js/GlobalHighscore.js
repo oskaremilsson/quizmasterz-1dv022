@@ -9,13 +9,15 @@ var Ajax = require("./Ajax");
 
 /**
  * GlobalHighscore constructor
+ * @param server{string}, server used
  * @param nickname{string}, the nickname
  * @param score{string}, the score(time)
  * @constructor
  */
-function GlobalHighscore(nickname, score) {
+function GlobalHighscore(server, nickname, score) {
     this.nickname = nickname;
     this.score = score;
+    this.server = server;
     this.date = new Date();
     this.highscore = [];
 }
@@ -24,33 +26,34 @@ function GlobalHighscore(nickname, score) {
  * Send the request to add the score to the server
  */
 GlobalHighscore.prototype.sendToServer = function() {
-    var data = {nickname: this.nickname, score: this.score, date: this.date};
+    var data = {server: this.server, nickname: this.nickname, score: this.score, date: this.date};
     var config = {
         method: "POST",
         url: "//root.oskaremilsson.se/quizmasterz/add.php",
         data: data
     };
 
-    Ajax.req(config, this.POSTresponse.bind(this));
+    Ajax.req(config, this.sendResponse.bind(this));
 };
 
 /**
  * Function to handle response from sending score to server
  */
-GlobalHighscore.prototype.POSTresponse = function(error, response) {
+GlobalHighscore.prototype.sendResponse = function(error, response) {
     if (response) {
         var config = {
-            method: "GET",
-            url: "//root.oskaremilsson.se/quizmasterz/read.php"
+            method: "POST",
+            url: "//root.oskaremilsson.se/quizmasterz/read.php",
+            data: {server: this.server}
         };
-        Ajax.req(config, this.GETresponse.bind(this));
+        Ajax.req(config, this.readResponse.bind(this));
     }
 };
 
 /**
  * Function to read the highscore-file from server storage
  */
-GlobalHighscore.prototype.GETresponse = function(error, response) {
+GlobalHighscore.prototype.readResponse = function(error, response) {
     if (response) {
         //parse file into JSON
         var json = JSON.parse(response);
@@ -111,14 +114,14 @@ GlobalHighscore.prototype.createHighscoreFragment = function() {
 
         //append the nickname and score to the row
         hsNickname.appendChild(document.createTextNode(tempHs.nickname));
-        hsScore.appendChild(document.createTextNode(tempHs.score));
+        hsScore.appendChild(document.createTextNode(parseFloat(tempHs.score).toFixed(3)));
 
         //convert the timestamp back to date-object
         tempDate = new Date(tempHs.date);
         hsDate.appendChild(document.createTextNode(tempDate.toLocaleTimeString("sv-se", dateOptions)));
 
         //if the global highscore is identical with this one add the highlight class
-        if (this.date.valueOf() === tempDate.valueOf() && this.nickname === tempHs.nickname && this.score === tempHs.score) {
+        if (this.date.valueOf() === tempDate.valueOf() && this.nickname === tempHs.nickname) {
             template.querySelector("tr").classList.add("highlight");
         }
 

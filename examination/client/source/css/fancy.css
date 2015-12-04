@@ -187,7 +187,7 @@ td:first-child::before {
     background: rgba(120,255,21,0.35);
 }
 
-#theme-selector {
+#theme-selector, #server-selector {
     background: transparent;
     width: 240px;
     padding: 5px;
@@ -226,3 +226,6 @@ h1 {
 	opacity: 0;
 }
 
+.server-info {
+	text-align: center;
+}

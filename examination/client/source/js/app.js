@@ -2,6 +2,7 @@
 
 var Quiz = require("./Quiz");
 var q;
+var serverURL = "//oskaremilsson.se:4000";
 
 function addThemeSelector() {
     //element to change the start-info
@@ -66,6 +67,19 @@ function addThemeSelector() {
     });
 }
 
+function addServerSelector() {
+    //add listener for the theme chooser
+    var select = document.querySelector("#server-selector");
+    select.addEventListener("change", function() {
+        if (select.value === "oskaremilssonse") {
+            serverURL = "//oskaremilsson.se:4000";
+        }
+        else {
+            serverURL = "//vhost3.lnu.se:20080";
+        }
+    });
+}
+
 /**
  * Function to handle the submit for nickname and start the quiz
  * @param event, the eventhandler from the listener
@@ -79,7 +93,7 @@ function submit(event) {
 
         //if nickname written, start quiz
         if (input.length > 1) {
-            q = new Quiz(input);
+            q = new Quiz(input, serverURL);
         }
     }
 }
@@ -100,3 +114,4 @@ form.addEventListener("keypress", submit, true);
 document.querySelector("input").focus();
 
 addThemeSelector();
+addServerSelector();

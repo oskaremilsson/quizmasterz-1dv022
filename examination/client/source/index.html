@@ -47,6 +47,7 @@
     <template id="template-quizCompleted">
         <div>
             <h2 class="show-score">You finished the game in <span class="time"></span> seconds</h2>
+            <p class="server-info"></p>
             <h2 class="hs-title"></h2>
             <table>
             </table>
@@ -60,6 +61,7 @@
     <template id="template-gameOver">
         <div>
             <h1></h1>
+            <p class="server-info"></p>
             <h2 class="hs-title"></h2>
             <table>
             </table>
@@ -92,8 +94,14 @@
             </form>
 
             <div class="styled-select">
+                <select id="server-selector">
+                    <option value="oskaremilssonse" selected>oskaremilsson.se</option>
+                    <option value="john">Kursens server</option>
+                </select>
+            </div>
+            <div class="styled-select">
                 <select id="theme-selector">
-                    <option disabled selected> -- Choose a theme -- </option>
+                    <option disabled selected> -- Change theme -- </option>
                     <option value="fancy">Fancy</option>
                     <option value="playful">Playful</option>
                     <option value="hacker">Hacker</option>

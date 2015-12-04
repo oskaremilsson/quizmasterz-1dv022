@@ -9,13 +9,15 @@ var GlobalHighscore = require("./GlobalHighscore");
 /**
  * Constructor function for the Quiz
  * @param nickname{string}, nickname to use for highscore
+ * @param server{string}, url to server to use
  * @constructor
  */
-function Quiz(nickname) {
+function Quiz(nickname, server) {
     this.nickname = nickname;
     this.timer = undefined;
     this.question = undefined;
-    this.nextURL = "http://oskaremilsson.se:4000/question/1"; //"http://vhost3.lnu.se:20080/question/1"
+    this.nextURL = server + "/question/1" || "http://vhost3.lnu.se:20080/question/1";
+    this.server = server;
     this.button = undefined;
     this.form = undefined;
     this.totalTime = 0;
@@ -168,7 +170,7 @@ Quiz.prototype.submit = function(event) {
  */
 Quiz.prototype.gameOver = function(cause) {
     //create a highscore module to show it to the user
-    var hs = new Highscore(this.nickname);
+    var hs = new Highscore(this.server, this.nickname);
     this.clearDiv(document.querySelector("#content"));
 
     //get the game over template
@@ -184,6 +186,10 @@ Quiz.prototype.gameOver = function(cause) {
 
     template.querySelector("h1").appendChild(title);
 
+    //delete the //, and cut the string at :, use the first part, then show it
+    var showServer = this.server.slice(2).split(":")[0];
+    template.querySelector(".server-info").appendChild(document.createTextNode("server: " + showServer));
+
     //if the highscore has entries add them to the template
     if (hs.highscore.length > 0) {
         template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));
@@ -191,7 +197,7 @@ Quiz.prototype.gameOver = function(cause) {
         template.querySelector("table").appendChild(hsFrag);
     }
 
-    var globalHs = new GlobalHighscore(this.nickname);
+    var globalHs = new GlobalHighscore(this.server, this.nickname);
     globalHs.sendToServer();
 
     //add the template to content
@@ -203,7 +209,7 @@ Quiz.prototype.gameOver = function(cause) {
  */
 Quiz.prototype.gameCompleted = function() {
     //create new highscore module to handle it
-    var hs = new Highscore(this.nickname, this.totalTime.toFixed(3));
+    var hs = new Highscore(this.server, this.nickname, this.totalTime.toFixed(3));
     var isNew = hs.addToList();
 
     var template = document.querySelector("#template-quizCompleted").content.cloneNode(true);
@@ -230,7 +236,7 @@ Quiz.prototype.gameCompleted = function() {
     document.querySelector("#content").appendChild(template);
 
     //add the global highscore
-    var globalHs = new GlobalHighscore(this.nickname, this.totalTime.toFixed(3));
+    var globalHs = new GlobalHighscore(this.server, this.nickname, this.totalTime.toFixed(3));
     globalHs.sendToServer();
 };
 

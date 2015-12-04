@@ -6,9 +6,10 @@
  * @param score{string}, the score(time)
  * @constructor
  */
-function Highscore(nickname, score) {
+function Highscore(server, nickname, score) {
     this.nickname = nickname;
     this.score = score;
+    this.server = server;
     this.date = new Date();
     this.highscore = [];
 
@@ -20,7 +21,7 @@ function Highscore(nickname, score) {
  * Function to read the highscore-file from local storage
  */
 Highscore.prototype.readFromFile = function() {
-    var hsFile = localStorage.getItem("hs");
+    var hsFile = localStorage.getItem("hs-" + this.server);
     if (hsFile) {
         //parse file into JSON
         var json = JSON.parse(hsFile);
@@ -95,7 +96,7 @@ Highscore.prototype.addToList = function() {
  * Function to save the highscore to local storage
  */
 Highscore.prototype.saveToFile = function() {
-    localStorage.setItem("hs", JSON.stringify(this.highscore));
+    localStorage.setItem("hs-" + this.server, JSON.stringify(this.highscore));
 };
 
 /**
