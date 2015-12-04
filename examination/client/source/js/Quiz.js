@@ -214,6 +214,10 @@ Quiz.prototype.gameCompleted = function() {
 
     var template = document.querySelector("#template-quizCompleted").content.cloneNode(true);
 
+    //delete the //, and cut the string at :, use the first part, then show it
+    var showServer = this.server.slice(2).split(":")[0];
+    template.querySelector(".server-info").appendChild(document.createTextNode("server: " + showServer));
+
     //get the highscore if the highscore has entries
     if (hs.highscore.length > 0) {
         template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));

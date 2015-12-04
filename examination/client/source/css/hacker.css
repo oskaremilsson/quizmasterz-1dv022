@@ -166,7 +166,7 @@ td:first-child::before {
     color: #0ce8f0;
 }
 
-#theme-selector {
+#theme-selector, #server-selector {
     background: transparent;
     width: 240px;
     padding: 10px;
@@ -187,5 +187,9 @@ td:first-child::before {
 }
 
 h1 {
+    text-align: center;
+}
+
+.server-info {
     text-align: center;
 }
