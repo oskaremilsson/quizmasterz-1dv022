@@ -78,7 +78,6 @@ GlobalHighscore.prototype.print = function() {
 
     //if the global highscore has entries add them to the template
     if (this.highscore.length > 0) {
-        document.querySelector(".ghs-title").appendChild(document.createTextNode("Global Highscore"));
         var globalHsFrag = this.createHighscoreFragment();
         table.appendChild(globalHsFrag);
     }

@@ -174,7 +174,10 @@ Quiz.prototype.gameOver = function(cause) {
     this.clearDiv(document.querySelector("#content"));
 
     //get the game over template
-    var template = document.querySelector("#template-gameOver").content.cloneNode(true);
+    var template = document.querySelector("#template-quizOver").content.cloneNode(true);
+
+    var showScore = template.querySelector(".show-score");
+    template.querySelector("div").removeChild(showScore);
 
     //print title depending on cause
     var title;
@@ -192,9 +195,13 @@ Quiz.prototype.gameOver = function(cause) {
 
     //if the highscore has entries add them to the template
     if (hs.highscore.length > 0) {
-        template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));
         var hsFrag = hs.createHighscoreFragment();
         template.querySelector("table").appendChild(hsFrag);
+    }
+    else {
+        var label = document.createElement("label");
+        label.appendChild(document.createTextNode("No highscore yet :("));
+        template.querySelector("table").appendChild(label);
     }
 
     var globalHs = new GlobalHighscore(this.server, this.nickname);
@@ -212,7 +219,7 @@ Quiz.prototype.gameCompleted = function() {
     var hs = new Highscore(this.server, this.nickname, this.totalTime.toFixed(3));
     var isNew = hs.addToList();
 
-    var template = document.querySelector("#template-quizCompleted").content.cloneNode(true);
+    var template = document.querySelector("#template-quizOver").content.cloneNode(true);
 
     //delete the //, and cut the string at :, use the first part, then show it
     var showServer = this.server.slice(2).split(":")[0];
@@ -220,16 +227,14 @@ Quiz.prototype.gameCompleted = function() {
 
     //get the highscore if the highscore has entries
     if (hs.highscore.length > 0) {
-        template.querySelector(".hs-title").appendChild(document.createTextNode("Highscore"));
+        //get the fragment from highscore-module
         var hsFrag = hs.createHighscoreFragment();
         template.querySelector("table").appendChild(hsFrag);
     }
 
     if (isNew) {
-        var newHS = document.createElement("h1");
-        newHS.appendChild(document.createTextNode("New Highscore!"));
-        var div = template.querySelector("div");
-        div.insertBefore(newHS, div.firstChild);
+        var title = document.createTextNode("New Highscore!");
+        template.querySelector("h1").appendChild(title);
     }
 
     this.clearDiv(document.querySelector("#content"));
