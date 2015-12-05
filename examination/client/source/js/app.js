@@ -86,6 +86,11 @@ if (localStorage.getItem("theme")) {
     var theme = localStorage.getItem("theme");
     document.querySelector("#baseStyle").setAttribute("href", "stylesheet/" + theme + ".css");
     document.querySelector("#loadingStyle").setAttribute("href", "stylesheet/" + theme + "_loading.css");
+
+    if (theme === "nostyle") {
+        //reset the href-tag on globalstyle to get true nostyle
+        document.querySelector("#globalStyle").setAttribute("href", "");
+    }
 }
 
 var button = document.querySelector("#submit");
