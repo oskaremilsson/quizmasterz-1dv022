@@ -12,7 +12,7 @@ function Question(obj) {
 }
 
 /**
- * Functionb to present the question
+ * Function to present the question
  */
 Question.prototype.print = function() {
     //statement to call the rightful printfunction
@@ -37,7 +37,7 @@ Question.prototype.clearDiv = function(div) {
 };
 
 /**
- * Function to present the querstion that has alternatives
+ * Function to present the question that has alternatives
  */
 Question.prototype.printAltQuestion = function() {
     //get the template and append the alternatives

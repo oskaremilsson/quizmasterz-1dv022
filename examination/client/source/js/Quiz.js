@@ -41,7 +41,7 @@ Quiz.prototype.getQuestion = function() {
 
 /**
  * Function to handle the response, uses as argument "callback" in a request
- * @param error{Number}, errorcode, null if no error
+ * @param error{Number}, error code, null if no error
  * @param response{string}, response string to parse JSON from
  */
 Quiz.prototype.response = function(error, response) {
