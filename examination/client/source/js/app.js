@@ -55,6 +55,9 @@ function addServerSelector() {
         else if (select.value === "music") {
             serverURL = "//oskaremilsson.se:4001";
         }
+        else if (select.value === "movie") {
+            serverURL = "//oskaremilsson.se:4002";
+        }
         else {
             serverURL = "//vhost3.lnu.se:20080";
         }
