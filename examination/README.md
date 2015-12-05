@@ -20,6 +20,7 @@ Global server saves the server-info in the table to handle the different ones
 
 ## Quiz select
 There is a drop-down selector that allows you to change the quiz server from a given list. Named after what types of question there is.
+Changes stored in local storage to be fetched on load.
 
 My own quiz-servers run on an cloud-server 24/7.
 
