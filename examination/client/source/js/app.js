@@ -4,6 +4,9 @@ var Quiz = require("./Quiz");
 var q;
 var serverURL = "//vhost3.lnu.se:20080";
 
+/**
+ * Function to add event listener to the theme selector
+ */
 function addThemeSelector() {
     //element to change the start-info
     var descr = document.querySelector("#start-info");
@@ -45,6 +48,10 @@ function addThemeSelector() {
     });
 }
 
+/**
+ * Function to choose server from given name
+ * @param name{string}, server-alias
+ */
 function pickServer(name) {
     if (name === "random") {
         serverURL = "//oskaremilsson.se:4000";
@@ -60,6 +67,9 @@ function pickServer(name) {
     }
 }
 
+/**
+ * Function to add event listener to the server selector
+ */
 function addServerSelector() {
     //add listener for the theme chooser
     var select = document.querySelector("#server-selector");
@@ -83,6 +93,7 @@ function submit(event) {
 
         //if nickname written, start quiz
         if (input.length > 1) {
+            //start the quiz
             q = new Quiz(input, serverURL);
         }
     }
@@ -93,6 +104,7 @@ if (localStorage.getItem("theme")) {
     document.querySelector("#baseStyle").setAttribute("href", "stylesheet/" + theme + ".css");
     document.querySelector("#loadingStyle").setAttribute("href", "stylesheet/" + theme + "_loading.css");
 
+    //set the theme as selected
     var themeSelector = document.querySelector("option[value='" + theme + "']");
     themeSelector.setAttribute("selected", "selected");
 
@@ -105,6 +117,8 @@ if (localStorage.getItem("theme")) {
 if (localStorage.getItem("quiz")) {
     var quiz = localStorage.getItem("quiz");
     pickServer(quiz);
+
+    //set the quiz as selected
     var selector = document.querySelector("option[value='" + quiz + "']");
     selector.setAttribute("selected", "selected");
 }
@@ -112,6 +126,7 @@ if (localStorage.getItem("quiz")) {
 var button = document.querySelector("#submit");
 var form = document.querySelector("#qForm");
 
+//add listeners
 button.addEventListener("click", submit, true);
 form.addEventListener("keypress", submit, true);
 
