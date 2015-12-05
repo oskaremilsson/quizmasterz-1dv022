@@ -2,7 +2,7 @@
 
 var Quiz = require("./Quiz");
 var q;
-var serverURL = "//oskaremilsson.se:4000";
+var serverURL = "//oskaremilsson.se:4001";
 
 function addThemeSelector() {
     //element to change the start-info
@@ -71,8 +71,11 @@ function addServerSelector() {
     //add listener for the theme chooser
     var select = document.querySelector("#server-selector");
     select.addEventListener("change", function() {
-        if (select.value === "oskaremilssonse") {
+        if (select.value === "random") {
             serverURL = "//oskaremilsson.se:4000";
+        }
+        else if (select.value === "music") {
+            serverURL = "//oskaremilsson.se:4001";
         }
         else {
             serverURL = "//vhost3.lnu.se:20080";
