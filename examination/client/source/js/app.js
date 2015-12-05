@@ -15,51 +15,15 @@ function addThemeSelector() {
         var loadingStyle = document.querySelector("#loadingStyle");
         localStorage.setItem("theme", select.value);
 
-        if (select.value === "playful") {
-            baseStyle.setAttribute("href", "stylesheet/playful.css");
-            loadingStyle.setAttribute("href", "stylesheet/playful_loading.css");
-
-            if (descr.hasChildNodes()) {
-                descr.removeChild(descr.firstChild);
-            }
+        if (descr.hasChildNodes()) {
+            descr.removeChild(descr.firstChild);
         }
-        else if (select.value === "hacker") {
-            baseStyle.setAttribute("href", "stylesheet/hacker.css");
-            loadingStyle.setAttribute("href", "stylesheet/hacker_loading.css");
 
-            if (descr.hasChildNodes()) {
-                descr.removeChild(descr.firstChild);
-            }
-        }
-        else if (select.value === "fancy") {
-            baseStyle.setAttribute("href", "stylesheet/fancy.css");
-            loadingStyle.setAttribute("href", "stylesheet/fancy_loading.css");
+        baseStyle.setAttribute("href", "stylesheet/" + select.value + ".css");
+        loadingStyle.setAttribute("href", "stylesheet/" + select.value + ".css");
 
-            if (descr.hasChildNodes()) {
-                descr.removeChild(descr.firstChild);
-            }
-        }
-        else if (select.value === "terminal") {
-            baseStyle.setAttribute("href", "stylesheet/terminal.css");
-            loadingStyle.setAttribute("href", "stylesheet/terminal_loading.css");
-
+        if (select.value === "terminal") {
             descr.appendChild(document.createTextNode("Use keypad to choose when alternatives. OBS! Don't use mouseclick in this mode!"));
-        }
-        else if (select.value === "nostyle") {
-            baseStyle.setAttribute("href", "stylesheet/nostyle.css");
-            loadingStyle.setAttribute("href", "stylesheet/nostyle_loading.css");
-
-            if (descr.hasChildNodes()) {
-                descr.removeChild(descr.firstChild);
-            }
-        }
-        else if (select.value === "1me321") {
-            baseStyle.setAttribute("href", "stylesheet/1me321.css");
-            loadingStyle.setAttribute("href", "stylesheet/1me321.css");
-
-            if (descr.hasChildNodes()) {
-                descr.removeChild(descr.firstChild);
-            }
         }
 
         //set nickname-input focus
