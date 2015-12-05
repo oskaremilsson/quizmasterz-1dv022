@@ -165,31 +165,3 @@ td:first-child::before {
     background: #393939;
     color: #0ce8f0;
 }
-
-#theme-selector, #server-selector {
-    background: transparent;
-    width: 240px;
-    padding: 10px;
-    font-size: 16px;
-    line-height: 1;
-    border: 0;
-    border-radius: 0;
-    height: 34px;
-    -webkit-appearance: none;
-}
-
-.styled-select {
-    width: 240px;
-    height: 34px;
-    overflow: hidden;
-    background: url(../image/down_arrow_select.jpg) no-repeat right #ddd;
-    border: 1px solid #ccc;
-}
-
-h1 {
-    text-align: center;
-}
-
-.server-info {
-    text-align: center;
-}

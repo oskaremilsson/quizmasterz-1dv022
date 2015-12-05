@@ -1,0 +1,56 @@
+#select {
+    text-align: center;
+    width: 490px;
+    margin: 0 auto;
+}
+
+#select::after {
+    clear:both;
+    display: block;
+    content: "";
+}
+
+#theme-selector, #server-selector {
+    background: transparent;
+    width: 240px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    height: 34px;
+    -webkit-appearance: none;
+    float: left;
+}
+
+.styled-select {
+    margin: 0 auto;
+    width: 240px;
+    height: 34px;
+    overflow: hidden;
+    background: url(../image/down_arrow_select.jpg) no-repeat right #ddd;
+    border: 1px solid #ccc;
+    float: left;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+.timer-50 {
+    color: orange;
+    font-weight: bold;
+}
+
+.timer-25 {
+    color: red;
+    font-weight: bold;
+}
+
+.opacity {
+    opacity: 0;
+}
+
+.server-info {
+    text-align: center;
+}

@@ -13,6 +13,7 @@ function addThemeSelector() {
     select.addEventListener("change", function() {
         var baseStyle = document.querySelector("#baseStyle");
         var loadingStyle = document.querySelector("#loadingStyle");
+        document.querySelector("#globalStyle").setAttribute("href", "stylesheet/globalStyle.css");
         localStorage.setItem("theme", select.value);
 
         if (descr.hasChildNodes()) {
@@ -20,10 +21,15 @@ function addThemeSelector() {
         }
 
         baseStyle.setAttribute("href", "stylesheet/" + select.value + ".css");
-        loadingStyle.setAttribute("href", "stylesheet/" + select.value + ".css");
+        loadingStyle.setAttribute("href", "stylesheet/" + select.value + "_loading.css");
 
         if (select.value === "terminal") {
             descr.appendChild(document.createTextNode("Use keypad to choose when alternatives. OBS! Don't use mouseclick in this mode!"));
+        }
+        else if (select.value === "nostyle") {
+            baseStyle.setAttribute("href", "");
+            loadingStyle.setAttribute("href", "");
+            document.querySelector("#globalStyle").setAttribute("href", "");
         }
 
         //set nickname-input focus

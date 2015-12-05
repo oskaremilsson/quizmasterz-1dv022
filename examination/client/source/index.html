@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Examination 2</title>
+    <link id="globalStyle" rel="stylesheet" type="text/css" href="stylesheet/globalStyle.css">
     <link id="baseStyle" rel="stylesheet" type="text/css" href="stylesheet/fancy.css">
     <link id="loadingStyle" rel="stylesheet" type="text/css" href="stylesheet/fancy_loading.css">
 
@@ -93,23 +94,26 @@
                 <input type="button" id="submit" value="Go!" />
             </form>
 
-            <div class="styled-select">
-                <select id="server-selector">
-                    <option value="music" selected>Music quiz</option>
-                    <option value="random">Fun quiz</option>
-                    <option value="course">Course quiz (vhost3.lnu.se)</option>
-                </select>
-            </div>
-            <div class="styled-select">
-                <select id="theme-selector">
-                    <option disabled selected> -- Change theme -- </option>
-                    <option value="fancy">Fancy</option>
-                    <option value="playful">Playful</option>
-                    <option value="hacker">Hacker</option>
-                    <option value="terminal">Terminal</option>
-                    <option value="1me321">1me321</option>
-                    <option value="nostyle">Mats favorit</option>
-                </select>
+            <div id="select">
+                <h2>Choose quiz and theme</h2>
+                <div class="styled-select">
+                    <select id="server-selector">
+                        <option value="music" selected>Music quiz</option>
+                        <option value="random">Fun quiz</option>
+                        <option value="course">Course quiz (vhost3.lnu.se)</option>
+                    </select>
+                </div>
+                <div class="styled-select">
+                    <select id="theme-selector">
+                        <option disabled selected> -- Change theme -- </option>
+                        <option value="fancy">Fancy</option>
+                        <option value="playful">Playful</option>
+                        <option value="hacker">Hacker</option>
+                        <option value="terminal">Terminal</option>
+                        <option value="1me321">1me321</option>
+                        <option value="nostyle">Mats favorit</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
