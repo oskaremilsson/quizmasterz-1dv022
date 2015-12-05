@@ -13,22 +13,30 @@ function addThemeSelector() {
     select.addEventListener("change", function() {
         var baseStyle = document.querySelector("#baseStyle");
         var loadingStyle = document.querySelector("#loadingStyle");
+
+        //need to set globalStyle everytime since nostyle deletes that
         document.querySelector("#globalStyle").setAttribute("href", "stylesheet/globalStyle.css");
+
         localStorage.setItem("theme", select.value);
 
+        //clean the description if needed
         if (descr.hasChildNodes()) {
             descr.removeChild(descr.firstChild);
         }
 
+        //set the selected theme
         baseStyle.setAttribute("href", "stylesheet/" + select.value + ".css");
         loadingStyle.setAttribute("href", "stylesheet/" + select.value + "_loading.css");
 
+        //add description
         if (select.value === "terminal") {
             descr.appendChild(document.createTextNode("Use keypad to choose when alternatives. OBS! Don't use mouseclick in this mode!"));
         }
         else if (select.value === "nostyle") {
             baseStyle.setAttribute("href", "");
             loadingStyle.setAttribute("href", "");
+
+            //reset the href-tag on globalstyle to get true nostyle
             document.querySelector("#globalStyle").setAttribute("href", "");
         }
 

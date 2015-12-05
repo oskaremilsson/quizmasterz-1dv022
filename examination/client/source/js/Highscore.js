@@ -2,6 +2,7 @@
 
 /**
  * Highscore constructor
+ * @param server{string}, the server name
  * @param nickname{string}, the nickname
  * @param score{string}, the score(time)
  * @constructor
