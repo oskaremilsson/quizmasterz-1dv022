@@ -2,7 +2,7 @@
 
 var Quiz = require("./Quiz");
 var q;
-var serverURL = "//oskaremilsson.se:4001";
+var serverURL = "//vhost3.lnu.se:20080";
 
 function addThemeSelector() {
     //element to change the start-info
@@ -45,22 +45,28 @@ function addThemeSelector() {
     });
 }
 
+function pickServer(name) {
+    if (name === "random") {
+        serverURL = "//oskaremilsson.se:4000";
+    }
+    else if (name === "music") {
+        serverURL = "//oskaremilsson.se:4001";
+    }
+    else if (name === "movie") {
+        serverURL = "//oskaremilsson.se:4002";
+    }
+    else {
+        serverURL = "//vhost3.lnu.se:20080";
+    }
+}
+
 function addServerSelector() {
     //add listener for the theme chooser
     var select = document.querySelector("#server-selector");
     select.addEventListener("change", function() {
-        if (select.value === "random") {
-            serverURL = "//oskaremilsson.se:4000";
-        }
-        else if (select.value === "music") {
-            serverURL = "//oskaremilsson.se:4001";
-        }
-        else if (select.value === "movie") {
-            serverURL = "//oskaremilsson.se:4002";
-        }
-        else {
-            serverURL = "//vhost3.lnu.se:20080";
-        }
+        pickServer(select.value);
+
+        localStorage.setItem("quiz", select.value);
     });
 }
 
@@ -87,10 +93,20 @@ if (localStorage.getItem("theme")) {
     document.querySelector("#baseStyle").setAttribute("href", "stylesheet/" + theme + ".css");
     document.querySelector("#loadingStyle").setAttribute("href", "stylesheet/" + theme + "_loading.css");
 
+    var themeSelector = document.querySelector("option[value='" + theme + "']");
+    themeSelector.setAttribute("selected", "selected");
+
     if (theme === "nostyle") {
         //reset the href-tag on globalstyle to get true nostyle
         document.querySelector("#globalStyle").setAttribute("href", "");
     }
+}
+
+if (localStorage.getItem("quiz")) {
+    var quiz = localStorage.getItem("quiz");
+    pickServer(quiz);
+    var selector = document.querySelector("option[value='" + quiz + "']");
+    selector.setAttribute("selected", "selected");
 }
 
 var button = document.querySelector("#submit");
