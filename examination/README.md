@@ -2,6 +2,7 @@
 
 ## Additional Features
 * Global highscore
+* Server independent highscore
 * Quiz select (server select)
 * Highlight if new highscore 
 * Theme select
@@ -13,6 +14,11 @@ mySQL table structure is really simple and contains:
 | server | nickname | score | date |
 
 The read-script only returns the lines from which server is being asked for. 
+
+### Server independent highscore
+The highscore, both local and global, is server independent.
+Local server saves the highscore in different files in local storage
+Global server saves the server-info in the table to handle the different ones
 
 ## Quiz select
 There is a drop-down selector that allows you to change the quiz server from a given list. Named after what types of question there is.
