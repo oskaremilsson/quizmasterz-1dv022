@@ -1,6 +1,4 @@
-# Oskar Emilssons Examination-2
-
-## Additional Features
+# Additional Features
 * Global highscore
 * Server independent highscore
 * Quiz select (server select)
