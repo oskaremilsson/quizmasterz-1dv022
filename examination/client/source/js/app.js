@@ -2,7 +2,7 @@
 
 var Quiz = require("./Quiz");
 var q;
-var serverURL = "//vhost3.lnu.se:20080";
+var serverURL = "//oskaremilsson.se:4001";
 
 /**
  * Function to add event listener to the theme selector
@@ -61,9 +61,6 @@ function pickServer(name) {
     }
     else if (name === "movie") {
         serverURL = "//oskaremilsson.se:4002";
-    }
-    else {
-        serverURL = "//vhost3.lnu.se:20080";
     }
 }
 
