@@ -8,4 +8,5 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :shell, :path => "provision.sh"
   config.vm.provision :shell, :path => "install-node.sh", privileged: false
+  config.vm.provision :shell, :path => "create-debug-folders.sh"
 end
